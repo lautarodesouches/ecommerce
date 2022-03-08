@@ -1,0 +1,280 @@
+/* Fonts Start*/
+
+.platino{
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+}
+
+.tahoma{
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
+.century{
+  font-family: Century Gothic, sans-serif;
+}
+
+.lucida{
+  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
+
+.arial-black{
+  font-family: 'Arial Black', Gadget, sans-serif;
+}
+
+.times{
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.arial-narrow{
+  font-family: 'Arial Narrow', sans-serif;
+}
+
+.verdana{
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+.copperplate{
+  font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+}
+
+.lucida-console{
+  font-family: 'Lucida Console', Monaco, monospace;
+}
+
+.gill{
+  font-family: Gill Sans / Gill Sans MT, sans-serif;
+}
+
+.trebuchet{
+  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
+
+.courier{
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.arial{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.georgia{
+  font-family: Georgia, Serif;
+}
+/* Fonts End */
+
+/* Index */
+
+#menu{
+  z-index: 98;
+}
+
+.h-250{
+  height: 250px;
+}
+
+.mh-430{
+  min-height: 430px;
+}
+
+.mh-700{
+  min-height: 700px;
+}
+
+.shr{
+  background: #d3d4d6;
+}
+
+.bg-cart{
+  background: linear-gradient(to bottom, rgb(13 110 253), #9c27b0);
+}
+
+.number-of-items{
+  width: 25px;
+  height: 25px;
+}
+
+#contenidoMenu{
+  position: absolute;
+  left: 0;
+}
+
+.cross{
+  position: absolute;
+  top: 0;
+  right: 5%;
+  color: black !important;
+}
+
+#categorias span, #marcas span, #envio span{
+  cursor: pointer;
+}
+
+.zoom{
+  transition: transform .5s ease;
+}
+
+.zoom:hover{
+  transform: scale(1.025);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
+
+a{
+  cursor: pointer;
+}
+
+.w-50-25{
+  width: 50%;
+}
+
+@media (min-width:768px){
+  
+  #contenidoMenu{
+    position: relative !important;
+    left: auto !important;
+  }
+
+  .h-md-125{
+    height: 125px;
+  }
+
+  .w-50-25{
+    width: 25%;
+  }
+
+}
+
+/* Productos */
+
+.h-30{
+  height: 30px;
+}
+
+.imagen-miniatura{
+  border: 1px solid;
+  border-color: #dee2e6; 
+}
+
+.imagen-miniatura-actual{
+  border-color: #0d6efd !important;
+}
+
+.bg-rojo{
+ background: red;
+}
+
+.bg-azul{
+ background: blue;
+}
+
+.bg-negro{
+ background: black;
+}
+
+.bg-verde{
+  background: green;
+}
+
+.bg-gris{
+  background: grey;
+}
+
+.bg-rojo:hover{
+  background: rgb(211, 3, 3);
+}
+ 
+.bg-azul:hover{
+  background: rgb(1, 1, 201);
+}
+ 
+.bg-negro:hover{
+  background: rgb(44, 44, 44);
+}
+ 
+.bg-verde:hover{
+  background: rgb(0, 78, 0);
+}
+ 
+.bg-gris:hover{
+  background: rgb(94, 94, 94);
+}
+
+.cursor{
+  cursor: pointer;
+}
+
+#seleccionarCantidad li, #seleccionarCantidad input{
+  background-color: #fff;
+  width: 100%;
+}
+
+#seleccionarCantidad li:hover{
+  background-color: #e1e1e1 !important;
+  color: #fff !important;
+}
+
+@media (min-width:768px){
+
+  .col-md-05 {
+    flex: 0 0 auto !important;
+    width: 3% !important;
+  }
+
+  .col-md-036 {
+    flex: 0 0 auto !important;
+    width: 38.6666666% !important;
+  }
+
+  #seleccionarCantidad {
+    position: absolute;
+  }
+
+  #seleccionarCantidad li, #seleccionarCantidad input{
+    background-color: #fff;
+    width: 100px !important;
+  }
+
+  #ordenar{
+    position: relative !important;
+  }
+  
+  #ordenar p, li{
+    cursor: pointer;
+  }
+  
+  #ordenar li:hover{
+    background-color: #e1e1e1 !important;
+  }
+  
+  #opcionesOrden{
+    position: absolute;
+    right: 0;
+    z-index: 99;
+  }
+  
+  .ordenActual{
+    background-color: #0d6efd !important;
+    color: #fff !important;
+  }  
+
+}
+
+#filtros{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  z-index: 99;
+}
+
+#ordenar{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  z-index: 99;
+}
+
+.bg-grey{
+  background-color: #ededed;
+}
