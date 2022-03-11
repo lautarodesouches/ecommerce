@@ -168,7 +168,7 @@ for (const iterator of listaDeOrden) {
                 background: "#fff",
                 color: "#000",
             },
-            duration: 3000  
+            duration: 2000
         }).showToast();
 
         correr();
@@ -501,7 +501,7 @@ function mostrarProductos() {
     
         for (let i = 0; i < copiaListaDeProductosLength; i++) {
 
-            let contenedor = document.createElement('div');
+            let contenedor = document.createElement('article');
             contenedor.className = 'col-12 col-md-4 p-3';
             contenedor.id = copiaListaDeProductos[i].id;
     
@@ -559,14 +559,14 @@ function agregarFiltroActivo(valor, tipo) {
     !listaFiltrosActivos.find((el) => el.tipo === tipo) && listaFiltrosActivos.push({valor: valor, tipo: tipo});
 
     // Si el tipo de filtro es diferente a busqueda, mostrar notificacion
-    tipo !== 'Busqueda' && (
+    (tipo !== 'Busqueda' && tipo != 'Precio Max' && tipo != 'Precio Min') && (
         Toastify({
             text: "Filtro agregado",
             style: {
                 background: "#fff",
                 color: "#000",
             },
-            duration: 3000  
+            duration: 2000  
         }).showToast()
     )
     
@@ -614,15 +614,15 @@ function borrarFiltro(valor, tipo) {
 
     }
 
-    // Si el tipo de filtro es diferente a busqueda, mostrar notificacion
-    tipo !== 'Busqueda' && (
+    // Si el tipo de filtro es diferente a busqueda o precio, mostrar notificacion
+    (tipo !== 'Busqueda' && tipo != 'Precio Max' && tipo != 'Precio Min') && (
         Toastify({
             text: `Filtro eliminado`,
             style: {
                 background: "#fff",
                 color: "#000",
             },  
-            duration: 3000
+            duration: 2000
         }).showToast()
     )
 
