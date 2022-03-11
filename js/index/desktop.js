@@ -714,4 +714,6 @@ function correr() {
 
 // ---------------------------------------- Llamar funciones
 
-correr();
+setTimeout(() => {
+    correr();
+}, 1000);

@@ -59,28 +59,22 @@ class Producto {
 
 }
 
-// Si la lista de productos esta vacia, agregar productos
-if (listaProductos.length === 0) {
+let cargo = false;
+
+const insertarProductos = async () => {
+
+    const resultado = await fetch('json/productos.json');
+    const respuesta = await resultado.json();
+    respuesta.forEach(producto => {
+        new Producto(producto.id, producto.nombre, producto.marca, producto.categoria, producto.precio, producto.cantidadDisponible, producto.cantidadComprada, producto.envioGratis, producto.imagenesDisponibles, producto.coloresDisponibles, producto.descripcion);
+    });
     
-    let id = 1;
-
-    // id, nombre, marca, categoria, precio, cantidadDisponible, cantidadComprada, envioGratis, imagenesDisponibles, coloresDisponibles, descripcion
-    new Producto( id++ , 'Notebook Asus'               , 'Asus'     , 'Notebooks'   , 139999   , Math.round(Math.random() * 101), 0  , false  , 3 ,['rojo', 'azul', 'negro']   , 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at dolorum similique aliquam. Ad quia veritatis id animi fugit? Architecto provident voluptatem nesciunt nobis quasi porro minima magni non blanditiis.');
-    new Producto( id++ , 'Notebook Lenovo'             , 'Lenovo'   , 'Notebooks'   , 57128    , Math.round(Math.random() * 101), 0  , false  , 2 ,['verde', 'gris', 'rojo']   , 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at dolorum similique aliquam. Ad quia veritatis id animi fugit? Architecto provident voluptatem nesciunt nobis quasi porro minima magni non blanditiis.');
-    new Producto( id++ , 'MacBook Air'                 , 'Apple'    , 'Notebooks'   , 249990   , Math.round(Math.random() * 101), 0  , true   , 2 ,['azul', 'negro', 'verde']  , 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at dolorum similique aliquam. Ad quia veritatis id animi fugit? Architecto provident voluptatem nesciunt nobis quasi porro minima magni non blanditiis.');
-    new Producto( id++ , 'Notebook Dell'               , 'Dell'     , 'Notebooks'   , 97999    , Math.round(Math.random() * 101), 0  , true   , 4 ,['gris', 'rojo', 'azul']    , 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at dolorum similique aliquam. Ad quia veritatis id animi fugit? Architecto provident voluptatem nesciunt nobis quasi porro minima magni non blanditiis.');
-    new Producto( id++ , 'Iphone 12'                   , 'Apple'    , 'Celulares'   , 257499   , Math.round(Math.random() * 101), 0  , false  , 4 ,['negro', 'gris', 'azul']   , 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at dolorum similique aliquam. Ad quia veritatis id animi fugit? Architecto provident voluptatem nesciunt nobis quasi porro minima magni non blanditiis.');
-    new Producto( id++ , 'LG K52'                      , 'LG'       , 'Celulares'   , 31999    , Math.round(Math.random() * 101), 0  , true   , 3 ,['rojo', 'azul', 'negro']   , 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at dolorum similique aliquam. Ad quia veritatis id animi fugit? Architecto provident voluptatem nesciunt nobis quasi porro minima magni non blanditiis.');
-    new Producto( id++ , 'LG K62'                      , 'LG'       , 'Celulares'   , 35999    , Math.round(Math.random() * 101), 0  , true   , 2 ,['verde', 'gris', 'azul']   , 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at dolorum similique aliquam. Ad quia veritatis id animi fugit? Architecto provident voluptatem nesciunt nobis quasi porro minima magni non blanditiis.');
-    new Producto( id++ , 'Samsung Galaxy S20'          , 'Samsung'  , 'Celulares'   , 94999    , Math.round(Math.random() * 101), 0  , false  , 2 ,['gris', 'negro', 'rojo']   , 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at dolorum similique aliquam. Ad quia veritatis id animi fugit? Architecto provident voluptatem nesciunt nobis quasi porro minima magni non blanditiis.');
-    new Producto( id++ , 'Noblex Dk50'                 , 'Noblex'   , 'Televisores' , 64999    , Math.round(Math.random() * 101), 0  , true   , 1 ,['negro', 'rojo', 'gris']   , 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at dolorum similique aliquam. Ad quia veritatis id animi fugit? Architecto provident voluptatem nesciunt nobis quasi porro minima magni non blanditiis.');
-    new Producto( id++ , 'Smart TV Samsung Series 4'   , 'Samsung'  , 'Televisores' , 35999    , Math.round(Math.random() * 101), 0  , false  , 2 ,['verde', 'azul', 'negro']  , 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at dolorum similique aliquam. Ad quia veritatis id animi fugit? Architecto provident voluptatem nesciunt nobis quasi porro minima magni non blanditiis.');
-    new Producto( id++ , 'Xiaomi Mi Smart Band 6'      , 'Xiaomi'   , 'SmartWatch'  , 6362     , Math.round(Math.random() * 101), 0  , true   , 1 ,['rojo', 'verde', 'azul']   , 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime at dolorum similique aliquam. Ad quia veritatis id animi fugit? Architecto provident voluptatem nesciunt nobis quasi porro minima magni non blanditiis.');
-
     // Almacenar productos (actua como base de datos (pd: podrias cambiarle el precio y llevartelo gratis ;P))
     sessionStorage.setItem('productos', JSON.stringify(listaProductos));
 
 }
+
+listaProductos.length < 1 && insertarProductos();
 
 // ---------------------------------------- Funciones
 
