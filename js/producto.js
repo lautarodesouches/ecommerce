@@ -217,24 +217,15 @@ function mostrarDisponibles() {
 
 // Agregar items en carrito y guardar el local storage
 function manejarCarrito() {
-
-    console.log('2- ' + producto.cantidadComprada)
     
     // Buscar si el producto ya esta en el carrito
     let index = carrito.indexOf(carrito.find( (el) => el.id === producto.id ));
 
-    console.log('* - ' + index)
-
     // Si el producto existe en el carrito, sumar cantidades compradas, si no, agregar nuevo
     index !== -1 ? (carrito[index].cantidadComprada += producto.cantidadComprada) : carrito.push(producto);
 
-    console.log('3- ' + producto.cantidadComprada)
-
     // Restar cantidad comprada a disponible
     producto.cantidadDisponible -= producto.cantidadComprada;
-    
-    console.log(producto.cantidadDisponible)
-    console.log('4- ' + producto.cantidadComprada)
 
     // Guardar carrito en local storage
     localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -250,7 +241,6 @@ function botonesComprarYAgregar(e) {
     e.preventDefault();
 
     producto.cantidadComprada = parseInt(cantidadActual.children[0].innerText);
-    console.log('1-' + producto.cantidadComprada + ' - ' + parseInt(cantidadActual.children[0].innerText))
 
     // Agregar producto al carrito y almacenarlo en local storage
     manejarCarrito();

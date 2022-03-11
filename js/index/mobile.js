@@ -31,9 +31,7 @@ const buscarPrecioMinimo    = document.getElementById('precioMinimo');
 const buscarPrecioMaximo    = document.getElementById('precioMaximo');
 const agregarFiltroPrecio   = document.getElementById('agregarFiltroPrecio');
 const ordenar               = document.getElementById('ordenar');
-//const abrirOpcionesOrden    = document.getElementById('abrirOpcionesOrden');
 const opcionesOrden         = document.getElementById('opcionesOrden');
-//const orden                 = document.getElementById('orden');
 const marcas                = document.getElementById('marcas');
 const categorias            = document.getElementById('categorias');
 const elegirEnvio           = document.getElementsByClassName('elegirEnvio');
@@ -50,18 +48,6 @@ const botonFiltrar          = document.getElementById('boton-filtrar');
 
 const exitOrdenar           = document.getElementsByClassName('exit-ordenar');
 const exitFiltros           = document.getElementsByClassName('exit-filtros');
-
-tipoEnvio.onclick = () => {changeDisplay(tipoEnvio.children[1])}
-precio.children[0].onclick = () => {changeDisplay(precio.children[1])}
-
-botonOrdenar.onclick = () => {changeDisplay(ordenar),hide(filtros)}
-botonFiltrar.onclick = () => {changeDisplay(filtros),hide(ordenar)}
-
-exitOrdenar[0].onclick = (e) => {e.preventDefault(), changeDisplay(ordenar)}
-exitFiltros[0].onclick = (e) => {e.preventDefault(), changeDisplay(filtros)}
-
-exitOrdenar[1].onclick = (e) => {e.preventDefault(), changeDisplay(ordenar)}
-exitFiltros[1].onclick = (e) => {e.preventDefault(), changeDisplay(filtros)}
 
 // ---------------------------------------- Funciones
 
@@ -148,15 +134,10 @@ function filtrarPorTipoDeEnvio(tipoEnvio) {
     tipoEnvio !== null && ( copiaListaDeProductos = copiaListaDeProductos.filter( (el) => el.envioGratis === tipoEnvio ) );
 }
 
-// Borrar clase ordenActual (fondo azul)  ** Eliminados
-function borrarOrdenAnterior() {
-    ordenActual[0].classList.remove('ordenActual');
-}
-
 // Lista de opciones de orden con el nombre a mostrar, el identificador, la funcion que tiene que realizar y si es el orden activo
 const listaDeOrden = [{nombre: 'Menor precio', id: 'menorPrecio', funcion: ordenarPrecioAscendente, activo: true}, {nombre: 'Mayor precio', id: 'mayorPrecio', funcion: ordenarPrecioDescendente, activo: false}, {nombre: 'Nombre A-Z', id: 'nombreAscendente', funcion: ordenarNombreAZ, activo: false}, {nombre: 'Nombre Z-A', id: 'nombreDescendente', funcion: ordenarNombreZA, activo: false}, {nombre: 'Random', id: 'random', funcion: ordenRandom, activo: false}]
 
-// Mostrar opciones de orden disponibles en DOM **
+// Mostrar opciones de orden disponibles en DOM
 for (const iterator of listaDeOrden) {
 
     let contenedor = document.createElement('p');
@@ -182,16 +163,12 @@ for (const iterator of listaDeOrden) {
 
         // Notificacion
         Toastify({
-
             text: `Orden aplicado`,
-        
             style: {
                 background: "#fff",
                 color: "#000",
             },
-                    
-            duration: 3000
-                    
+            duration: 3000  
         }).showToast();
 
         correr();
@@ -581,19 +558,17 @@ function agregarFiltroActivo(valor, tipo) {
     // Si no se encuentra un filtro con un tipo igual, agregar
     !listaFiltrosActivos.find((el) => el.tipo === tipo) && listaFiltrosActivos.push({valor: valor, tipo: tipo});
 
-    // Notificacion
-    Toastify({
-
-        text: "Filtro agregado",
-    
-        style: {
-            background: "#fff",
-            color: "#000",
-        },
-                
-        duration: 3000
-                
-    }).showToast();
+    // Si el tipo de filtro es diferente a busqueda, mostrar notificacion
+    tipo !== 'Busqueda' && (
+        Toastify({
+            text: "Filtro agregado",
+            style: {
+                background: "#fff",
+                color: "#000",
+            },
+            duration: 3000  
+        }).showToast()
+    )
     
 }
 
@@ -639,23 +614,21 @@ function borrarFiltro(valor, tipo) {
 
     }
 
-    // Notificacion
-    Toastify({
-
-        text: `Filtro eliminado`,
-    
-        style: {
-            background: "#fff",
-            color: "#000",
-        },
-                
-        duration: 3000
-                
-    }).showToast();
+    // Si el tipo de filtro es diferente a busqueda, mostrar notificacion
+    tipo !== 'Busqueda' && (
+        Toastify({
+            text: `Filtro eliminado`,
+            style: {
+                background: "#fff",
+                color: "#000",
+            },  
+            duration: 3000
+        }).showToast()
+    )
 
 }
 
-// Mostrar filtros activos ***
+// Mostrar filtros activos
 function mostrarFiltrosActivos() {
 
     // Limpiar
@@ -736,6 +709,20 @@ function correr() {
     mostrarProductos();
 
 }
+
+// ---------------------------------------- Eventos
+
+tipoEnvio.onclick           = () => {changeDisplay(tipoEnvio.children[1])};
+precio.children[0].onclick  = () => {changeDisplay(precio.children[1])};
+
+botonOrdenar.onclick        = () => {changeDisplay(ordenar),hide(filtros)};
+botonFiltrar.onclick        = () => {changeDisplay(filtros),hide(ordenar)};
+
+exitOrdenar[0].onclick      = (e) => {e.preventDefault(), changeDisplay(ordenar)};
+exitFiltros[0].onclick      = (e) => {e.preventDefault(), changeDisplay(filtros)};
+
+exitOrdenar[1].onclick      = (e) => {e.preventDefault(), changeDisplay(ordenar)};
+exitFiltros[1].onclick      = (e) => {e.preventDefault(), changeDisplay(filtros)};
 
 // ---------------------------------------- Llamar funciones
 
