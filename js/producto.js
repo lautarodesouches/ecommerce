@@ -221,8 +221,12 @@ function manejarCarrito() {
     // Buscar si el producto ya esta en el carrito
     let index = carrito.indexOf(carrito.find( (el) => el.id === producto.id ));
 
+    function sumarCantidades() {
+        carrito[index].cantidadComprada += producto.cantidadComprada;
+    }
+
     // Si el producto existe en el carrito, sumar cantidades compradas, si no, agregar nuevo
-    index !== -1 ? (carrito[index].cantidadComprada += producto.cantidadComprada) : carrito.push(producto);
+    index !== -1 ? sumarCantidades() : carrito.push(producto);
 
     // Restar cantidad comprada a disponible
     producto.cantidadDisponible -= producto.cantidadComprada;
@@ -270,15 +274,12 @@ agregarCarrito.onclick = (e) => {
 
     // Notificacion
     Toastify({
-
-    text: "Producto agregado!",
-
+    text: `Producto agregado!`,
     style: {
         background: "#0d6efd",
     },
-            
-    duration: 3000
-            
+    duration: 1000,
+    stopOnFocus: false
     }).showToast();
 
 }
