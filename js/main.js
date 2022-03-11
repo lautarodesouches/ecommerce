@@ -84,17 +84,6 @@ if (listaProductos.length === 0) {
 
 // ---------------------------------------- Funciones
 
-/*
-
-    Lista de funciones:
-
-        formatearNumero(numero)
-        changeDisplay(id)
-        mostrarUsuario()
-        itemsEnCarrito()
-
-*/
-
 // Por cada tres ceros agregar un punto para mejor apariencia
 function formatearNumero(numero) {
     return '$' + formatoNumero.format(numero);

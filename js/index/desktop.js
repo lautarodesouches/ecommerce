@@ -286,7 +286,7 @@ function compararSiHayDuplicadosEnMarcas() {
             listaMarcas.splice(i+1,1);
 
             // Volver uno atras porque el siguiente ya no existe
-            i--
+            i--;
         }
         
     }

@@ -13,6 +13,7 @@ function mensajeExito() {
     // Limpiar
     main.innerHTML = '';
     
+    // Crear div con mensaje de exito
     let contenedor = document.createElement('div');
     contenedor.classList.add('text-center');
     contenedor.innerHTML = `
@@ -27,13 +28,14 @@ function mensajeExito() {
     </a>
     `;
 
+    // Agregar div al main
     main.appendChild(contenedor);
 
 }
 
 // Si hay usuario
 if (usuarioLog) {
-
+    
     main.innerHTML = `
         <form class="p-3">
             <div class="mb-3">
