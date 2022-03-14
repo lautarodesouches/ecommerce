@@ -10,32 +10,7 @@ let chevronUp = false;
 
 // ---------------------------------------- Funciones
 
-function showSVGMenu(boolean) {
-
-    // Almacenar valor en variable
-    chevronUp = boolean;
-
-    if (boolean) {
-        mostrarMenu.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-            <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-        </svg>
-        `;
-    } else {
-        mostrarMenu.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-chevron-double-up" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z"/>
-          <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
-        </svg>
-        `;
-    }
-
-}
-
 export function showMenu() {
-
-    showSVGMenu(!chevronUp)
 
     menu[0].classList = 'bg-primary py-2 text-white container-fluid text-center';
     menu[0].innerHTML = `
@@ -77,10 +52,6 @@ export function showMenu() {
         </section>
         <section class="mt-3" id="menu-bottom">
             <div class="d-md-none" id="mostrarMenu">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                    <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                </svg>
             </div>
             <nav class="row d-none d-md-flex mt-2 rounded align-items-center justify-content-center" id="contenidoMenu">
                 <div class="col-12 col-md-2">
@@ -119,10 +90,33 @@ export function showMenu() {
 
     // ---------------------------------------- DOM
 
-    const botonMostrarMenu = document.getElementById('mostrarMenu');
-    const contenidoMenu = document.getElementById('contenidoMenu');
+    const botonMostrarMenu  = document.getElementById('mostrarMenu');
+    const contenidoMenu     = document.getElementById('contenidoMenu');
     
     // ---------------------------------------- Funciones
+
+    function showSVGMenu(boolean) {
+
+        // Almacenar valor en variable
+        chevronUp = boolean;
+    
+        if (boolean) {
+            botonMostrarMenu.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.646 6.646a.5.5 0 0 1 .708 0L8 12.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                <path fill-rule="evenodd" d="M1.646 2.646a.5.5 0 0 1 .708 0L8 8.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+            </svg>
+            `;
+        } else {
+            botonMostrarMenu.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-chevron-double-up" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 3.707 2.354 9.354a.5.5 0 1 1-.708-.708l6-6z"/>
+              <path fill-rule="evenodd" d="M7.646 6.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 7.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+            </svg>
+            `;
+        }
+    
+    }
 
     function mostrarMenu() {
         showSVGMenu(!chevronUp);
@@ -132,5 +126,9 @@ export function showMenu() {
     // ---------------------------------------- Eventos
 
     botonMostrarMenu.onclick = () => {mostrarMenu()};
+
+    // ---------------------------------------- LLamar funciones
+
+    showSVGMenu(!chevronUp);
 
 }
