@@ -1,0 +1,62 @@
+/* Fonts Start*/
+
+.platino{
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+  }
+  
+  .tahoma{
+    font-family: Tahoma, Geneva, sans-serif;
+  }
+  
+  .century{
+    font-family: Century Gothic, sans-serif;
+  }
+  
+  .lucida{
+    font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+  }
+  
+  .arial-black{
+    font-family: 'Arial Black', Gadget, sans-serif;
+  }
+  
+  .times{
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .arial-narrow{
+    font-family: 'Arial Narrow', sans-serif;
+  }
+  
+  .verdana{
+    font-family: Verdana, Geneva, sans-serif;
+  }
+  
+  .copperplate{
+    font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+  }
+  
+  .lucida-console{
+    font-family: 'Lucida Console', Monaco, monospace;
+  }
+  
+  .gill{
+    font-family: Gill Sans / Gill Sans MT, sans-serif;
+  }
+  
+  .trebuchet{
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  }
+  
+  .courier{
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .arial{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .georgia{
+    font-family: Georgia, Serif;
+  }
+  /* Fonts End */
