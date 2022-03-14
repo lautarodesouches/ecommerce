@@ -21,7 +21,7 @@ export function showFooter() {
               <div class="col-12 col-md-3"><a href="${urlAyuda}" class="text-decoration-none text-dark">Ayuda</a></div>
               <div class="col-12 col-md-3"><a href="${urlContacto}" class="text-decoration-none text-dark" target="_blank">Contacto</a></div>
               <div class="col-12 col-md-3"><a href="${urlPrivacidad}" class="text-decoration-none text-dark">Privacidad</a></div>
-              <div class="col-12 col-md-3">©${year} Copyright. All rights reserved.</div>
+              <div class="col-12 col-md-3">©${year} Copyright</div>
           </nav>
         </div>
     `;
