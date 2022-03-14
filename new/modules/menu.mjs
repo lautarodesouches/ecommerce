@@ -2,7 +2,7 @@ import {urlInicio, urlIniciarSesion, urlRegistrarse, urlCategorias, urlOfertas, 
 
 // ---------------------------------------- DOM
 
-const menu = document.getElementsByTagName('header');
+const menu = document.getElementsByTagName('header')[0];
 
 // ---------------------------------------- Variables
 
@@ -12,8 +12,8 @@ let chevronUp = false;
 
 export function showMenu() {
 
-    menu[0].classList = 'bg-primary py-2 text-white container-fluid text-center';
-    menu[0].innerHTML = `
+    menu.classList = 'bg-primary py-2 text-white container-fluid text-center';
+    menu.innerHTML = `
         <section id="menu-top">
             <nav class="row align-items-center justify-content-center">
                 <div class="col-2 col-md-1">
