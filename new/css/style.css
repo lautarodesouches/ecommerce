@@ -59,4 +59,17 @@
   .georgia{
     font-family: Georgia, Serif;
   }
+
   /* Fonts End */
+
+.logo{
+  width: 75%;
+}
+
+@media (min-width:768px){
+
+  .logo{
+    width: 40%;
+  }
+
+}
