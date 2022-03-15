@@ -299,8 +299,8 @@
         "imagenesDisponibles": 4,
         "coloresDisponibles": [
             "negro",
-            "blanco",
-            "gris"
+            "rojo",
+            "verde"
         ],
         "descripcion": "Con el Smart TV UN50AU7000G vas a acceder a las aplicaciones en las que se encuentran tus contenidos favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con videojuegos.",
         "destino": "products/"
@@ -315,7 +315,7 @@
         "envioGratis": false,
         "imagenesDisponibles": 3,
         "coloresDisponibles": [
-            "negro",
+            "azul",
             "blanco",
             "gris"
         ],
@@ -333,8 +333,8 @@
         "imagenesDisponibles": 4,
         "coloresDisponibles": [
             "negro",
-            "blanco",
-            "gris"
+            "verde",
+            "blanco"
         ],
         "descripcion": "Con el Smart TV UN50AU7000G vas a acceder a las aplicaciones en las que se encuentran tus contenidos favoritos. Además, podés navegar por Internet, interactuar en redes sociales y divertirte con videojuegos.",
         "destino": "products/"
