@@ -80,6 +80,14 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
 
   for (let i = 0; i < cantidad; i++) {
 
+    // Variable para mostrar envio gratis
+    let h5EnvioGratis = '';
+    // Variable para saber donde esta el texto oculto que se va a mostrar luego
+    let numeroChildren = 3;
+
+    // Si hay envio gratis cambiar variable y sumar 
+    array[i].envioGratis && (h5EnvioGratis = '<h5 class="text-success">Envío Gratis!</h5>', numeroChildren++);
+
     let article = document.createElement('article');
     article.classList = 'col-12 col-md-3 p-2';
     article.innerHTML = `
@@ -89,24 +97,16 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
         </div>
         <hr class="w-100">
         <h5>${formatearNumero(array[i].precio)}</h5>
+        ${h5EnvioGratis}
         <h5 class="d-md-none" id="${array[i].id}">${array[i].nombre}</h5>
       </div>
     `;
 
-    if (array[i].envioGratis) {
-        
-      let h5 = document.createElement('h5');
-      h5.classList = 'text-success';
-      h5.innerText = 'Envío Gratis!';
-      article.children[0].appendChild(h5);
-
-    }
-
     section.children[1].appendChild(article);
 
     // Eventos
-    article.onmouseover = () => {article.children[0].children[3].classList.toggle('d-md-none')};
-    article.onmouseout = () => {article.children[0].children[3].classList.toggle('d-md-none')};
+    article.onmouseover = () => {article.children[0].children[numeroChildren].classList.toggle('d-md-none')};
+    article.onmouseout = () => {article.children[0].children[numeroChildren].classList.toggle('d-md-none')};
 
     // Redirigir a pagina del producto
     article.onclick = () => {window.location.href = `${urlProductos}?id=${array[i].id}`};
