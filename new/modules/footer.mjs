@@ -1,4 +1,4 @@
-// ---------------------------------------- Import
+// ---------------------------------------- Importar
 
 import {urlAyuda, urlContacto, urlPrivacidad} from "../modules/urls.mjs";
 

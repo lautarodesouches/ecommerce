@@ -1,4 +1,6 @@
-import {urlInicio, urlIniciarSesion, urlRegistrarse, urlCategorias, urlOfertas, urlFavoritos, urlCarrito, urlProductos} from "../modules/urls.mjs";
+// ---------------------------------------- Importar
+
+import {urlInicio, urlIniciarSesion, urlRegistrarse, urlCategorias, urlOfertas, urlFavoritos, urlCarrito, urlProductos, urlCarpetaImg} from "../modules/urls.mjs";
 
 // ---------------------------------------- DOM
 
@@ -18,7 +20,7 @@ export function showMenu() {
             <nav class="row align-items-center justify-content-center">
                 <div class="col-2 col-md-1">
                     <a href="${urlInicio}" class="text-decoration-none text-white">
-                        <img src="img/logo.png" alt="Logo" class="logo">
+                        <img src="${urlCarpetaImg}logo.png" alt="Logo" class="logo">
                     </a>
                 </div>
                 <div class="col-7 col-md-5">

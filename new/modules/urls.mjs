@@ -1,12 +1,16 @@
-export const urlInicio          = './';
-export const urlIniciarSesion   = './login/';
-export const urlRegistrarse     = './register/';
-export const urlCategorias      = './categorias/';
-export const urlOfertas         = './ofertas/';
-export const urlFavoritos       = './favoritos/';
-export const urlCarrito         = './cart/';
-export const urlProductos       = './productos/';
+export const urlInicio          = '/new/';
+export const urlIniciarSesion   = '/new/login/';
+export const urlRegistrarse     = '/new/register/';
+export const urlCategorias      = '/new/categorias/';
+export const urlOfertas         = '/new/ofertas/';
+export const urlFavoritos       = '/new/favoritos/';
+export const urlCarrito         = '/new/cart/';
+export const urlProductos       = '/new/productos/';
 
-export const urlAyuda           = './help/';
-export const urlContacto        = './contact/';
-export const urlPrivacidad      = './privacy/';
+export const urlAyuda           = '/new/help/';
+export const urlContacto        = '/new/contact/';
+export const urlPrivacidad      = '/new/privacy/';
+
+export const urlCarpetaImg      = '/new/img/';
+
+export const urlProductosJSON   = '/new/json/productos.json';
