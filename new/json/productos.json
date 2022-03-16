@@ -137,23 +137,6 @@
     },
     {
         "id": 9,
-        "nombre": "Sony PlayStation 5 825GB Standard color blanco y negro",
-        "marca": "Sony",
-        "categoria": "Consolas",
-        "precio": 246999,
-        "cantidadDisponible": 81,
-        "envioGratis": true,
-        "imagenesDisponibles": 3,
-        "coloresDisponibles": [
-            "negro",
-            "rojo",
-            "gris"
-        ],
-        "descripcion": "Con tu consola PlayStation 5 tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos.",
-        "destino": "products/"
-    },
-    {
-        "id": 10,
         "nombre": "Consola Xbox Series S 512gb Microsoft",
         "marca": "Microsoft",
         "categoria": "Consolas",
@@ -167,6 +150,23 @@
             "azul"
         ],
         "descripcion": "Rendimiento de nueva generación en la Xbox más pequeña de la historia",
+        "destino": "products/"
+    },
+    {
+        "id": 10,
+        "nombre": "Nintendo Switch OLED 64GB Standard",
+        "marca": "Nintendo",
+        "categoria": "Consolas",
+        "precio": 94999,
+        "cantidadDisponible": 21,
+        "envioGratis": false,
+        "imagenesDisponibles": 3,
+        "coloresDisponibles": [
+            "rojo",
+            "azul",
+            "negro"
+        ],
+        "descripcion": "Con tu consola Switch tendrás entretenimiento asegurado todos los días. Su tecnología fue creada para poner nuevos retos tanto a jugadores principiantes como expertos.",
         "destino": "products/"
     },
     {
