@@ -193,3 +193,12 @@ export function noHayFavoritos(dom) {
   dom.appendChild(section);
 
 }
+
+export function copiarArray(arrayDeseado, arrayDestino) {
+  // Limpiar
+  arrayDestino.splice(0, arrayDestino.length);
+  // Por cada elemento del array deseado, mandar a destino
+  arrayDeseado.forEach(element => {
+      arrayDestino.push(element)
+  });
+}

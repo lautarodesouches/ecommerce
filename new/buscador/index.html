@@ -25,7 +25,50 @@
 <!--===============================================================================================-->
     <header></header>
 <!--===============================================================================================-->
-    <main class="container-fluid px-md-0 py-5 bg-light mh-700"></main>
+    <main class="container-fluid py-5 bg-light mh-700">
+        <div class="row align-items-start justify-content-center">
+            <section class="col-12 col-md-3" id="filtros">
+                <div class="row">
+                    <div class="col-1 col-md-2"></div>
+                    <div class="col-11 col-md-10">
+                        <section class="my-4">
+                            <h5>Categorias</h5>
+                            <p class="m-0">Notebook <span class="text-secondary">(1)</span></p>
+                            <p class="m-0">Celulares <span class="text-secondary">(1)</span></p>
+                            <p class="m-0">TV <span class="text-secondary">(1)</span></p>
+                        </section>
+                        <section class="my-4">
+                            <h5>Marcas</h5>
+                            <p class="m-0">Notebook <span class="text-secondary">(1)</span></p>
+                            <p class="m-0">Celulares <span class="text-secondary">(1)</span></p>
+                            <p class="m-0">TV <span class="text-secondary">(1)</span></p>
+                        </section>
+                    </div>
+                </div>
+            </section>
+            <div class="col-12 col-md-9">
+                <section class="row align-items-start justify-content-end" id="orden">
+                    <div class="col-8 col-md-2 text-center border p-0 rounded bg-white">
+                        <div class="py-2 rounded" id="abrirOpcionesOrden">
+                            <span>Menor Precio</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="blue" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                            </svg>
+                        </div>
+                        <div class="bg-white d-none" id="OpcionesOrden">
+                            <ul class="list-unstyled m-0">
+                                <li class="py-1 border-top rounded">Menor Precio</li>
+                                <li class="py-1 border-top rounded">Mayor Precio</li>
+                                <li class="py-1 border-top rounded">Random</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-2 col-md-1"></div>
+                </section>
+                <section id="resultados"></section>
+            </div>
+        </div>
+    </main>
 <!--===============================================================================================-->
     <footer></footer>
 <!--===============================================================================================-->
