@@ -1,6 +1,6 @@
 // ---------------------------------------- Importar
 
-import {urlInicio, urlIniciarSesion, urlRegistrarse, urlCategorias, urlOfertas, urlFavoritos, urlCarrito, urlProductos, urlCarpetaImg} from "../modules/urls.mjs";
+import {urlInicio, urlIniciarSesion, urlRegistrarse, urlCategorias, urlOfertas, urlFavoritos, urlCarrito, urlCarpetaImg, urlBuscador} from "../modules/urls.mjs";
 
 // ---------------------------------------- DOM
 
@@ -24,8 +24,8 @@ export function showMenu() {
                     </a>
                 </div>
                 <div class="col-7 col-md-5">
-                    <form action="${urlProductos}" method="get">
-                        <input class="form-control shadow" type="text" placeholder="Buscar" buscar="producto" aria-label="Search" id="buscadorPrincipal">
+                    <form action="${urlBuscador}" method="get">
+                        <input class="form-control shadow" type="text" placeholder="Buscar" name="search" aria-label="Search" id="buscadorPrincipal">
                     </form>
                 </div>
                 <div class="col-3 col-md-5">

@@ -5,7 +5,8 @@ export const urlCategorias      = '/new/categorias/';
 export const urlOfertas         = '/new/ofertas/';
 export const urlFavoritos       = '/new/favoritos/';
 export const urlCarrito         = '/new/cart/';
-export const urlProductos       = '/new/productos/';
+export const urlProducto       = '/new/producto/';
+export const urlBuscador        = '/new/buscador/';
 
 export const urlAyuda           = '/new/help/';
 export const urlContacto        = '/new/contact/';

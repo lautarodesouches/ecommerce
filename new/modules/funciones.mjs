@@ -1,6 +1,6 @@
 // ---------------------------------------- Importar
 
-import {urlProductos, urlCarpetaImg} from "../modules/urls.mjs";
+import {urlProducto, urlCarpetaImg, urlInicio, urlBuscador} from "../modules/urls.mjs";
 import {todosLosProductos} from "../modules/arrays.mjs";
 
 // ---------------------------------------- Exportar
@@ -89,7 +89,7 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
     array[i].envioGratis && (h5EnvioGratis = '<h5 class="text-success">Envío Gratis!</h5>', numeroChildren++);
 
     let article = document.createElement('article');
-    article.classList = 'col-12 col-md-3 p-2';
+    article.classList = 'col-12 col-md-3 p-2 articulo';
     article.innerHTML = `
       <div class="rounded border bg-white p-3 articulo-principal">
         <div class="contenedor-img">
@@ -105,11 +105,11 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
     section.children[1].appendChild(article);
 
     // Eventos
-    article.onmouseover = () => {article.children[0].children[numeroChildren].classList.toggle('d-md-none')};
-    article.onmouseout = () => {article.children[0].children[numeroChildren].classList.toggle('d-md-none')};
+    article.children[0].onmouseover = () => {article.children[0].children[numeroChildren].classList.toggle('d-md-none')};
+    article.children[0].onmouseout = () => {article.children[0].children[numeroChildren].classList.toggle('d-md-none')};
 
     // Redirigir a pagina del producto
-    article.onclick = () => {window.location.href = `${urlProductos}?id=${array[i].id}`};
+    article.onclick = () => {window.location.href = `${urlProducto}?id=${array[i].id}`};
       
   }
   
@@ -145,12 +145,12 @@ export function mostrarCategorias(dom, array) {
     let article = document.createElement('article');
     article.classList = 'col-12 col-md-4 p-3';
     article.innerHTML = `
-      <div class="bg-white px-2 py-4 rounded border">
+      <div class="bg-white px-2 py-4 rounded border categoria">
           <h5>${element}</h5>
       </div>
     `;
 
-    article.onclick = () => {window.location.href = `${urlProductos}?categoria=${element}`}
+    article.onclick = () => {window.location.href = `${urlBuscador}?categoria=${element}`}
 
     div.appendChild(article);
 
@@ -173,5 +173,23 @@ export function obtenerCategorias() {
   });
 
   return listaCategorias;
+
+}
+
+export function noHayFavoritos(dom) {
+
+  let section = document.createElement('section');
+  section.classList = 'text-center mt-5';
+  section.innerHTML = `
+  <div class="my-5">
+      <h3>No se encontraron favoritos agregados!</h3>
+      <h5>Podés agregar productos a favoritos para poder verlos o comprarlos más tarde.</h5>
+  </div>
+  <a href="${urlInicio}">
+      <h3>Empezá a buscar productos para agregar acá</h3>
+  </a>
+  `;
+  
+  dom.appendChild(section);
 
 }
