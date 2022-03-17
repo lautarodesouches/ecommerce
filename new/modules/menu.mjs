@@ -24,8 +24,8 @@ export function showMenu() {
                     </a>
                 </div>
                 <div class="col-7 col-md-5">
-                    <form action="${urlBuscador}" method="get">
-                        <input class="form-control shadow" type="text" placeholder="Buscar" name="search" aria-label="Search" id="buscadorPrincipal">
+                    <form action="${urlBuscador}" method="get" id="buscadorPrincipal">
+                        <input class="form-control shadow" type="text" placeholder="Buscar" name="search" aria-label="Search">
                     </form>
                 </div>
                 <div class="col-3 col-md-5">
@@ -94,6 +94,7 @@ export function showMenu() {
 
     const botonMostrarMenu  = document.getElementById('mostrarMenu');
     const contenidoMenu     = document.getElementById('contenidoMenu');
+    const buscadorPrincipal = document.getElementById('buscadorPrincipal');
     
     // ---------------------------------------- Funciones
 
@@ -128,6 +129,14 @@ export function showMenu() {
     // ---------------------------------------- Eventos
 
     botonMostrarMenu.onclick = () => {mostrarMenu()};
+    buscadorPrincipal.onsubmit = (e) => {
+        // Prevenir recarga
+        e.preventDefault(),
+        // Almacenar consulta
+        sessionStorage.setItem('busqueda',buscadorPrincipal[0].value), 
+        // Redirigir
+        window.location.href = urlBuscador;
+    }
 
     // ---------------------------------------- LLamar funciones
 

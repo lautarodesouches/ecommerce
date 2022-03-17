@@ -2,9 +2,8 @@
 
 import {showMenu} from "../modules/menu.mjs";
 import {showFooter} from "../modules/footer.mjs";
-import {mostrarError, mostrarCategoria, mostrarMarca, correrBusqueda} from "../modules/funciones.mjs";
+import {mostrarError, correrBusqueda} from "../modules/funciones.mjs";
 import {cargarProductos} from "../modules/promesas.mjs";
-import {copiaTodosLosProductos} from "../modules/arrays.mjs";
 
 // ---------------------------------------- DOM
 
