@@ -1,7 +1,7 @@
 // ---------------------------------------- Importar
 
 import {urlProducto, urlCarpetaImg, urlInicio, urlBuscador} from "../modules/urls.mjs";
-import {copiaTodosLosProductos, todosLosProductos} from "../modules/arrays.mjs";
+import {todosLosProductos, copiaTodosLosProductos} from "../modules/arrays.mjs";
 
 // ---------------------------------------- Exportar
 
@@ -65,6 +65,8 @@ export function mostrarBanners(lugar) {
 }
 
 export function mostrarProductos(id, titulo, array, cantidad, dom) {
+
+  dom.innerHTML = '';
     
   let section = document.createElement('section');
   section.classList = 'container text-center mh-500 py-3';
@@ -137,6 +139,8 @@ export function mostrarError(main, error) {
 
 export function mostrarCategorias(dom, array) {
 
+  dom.innerHTML = '';
+
   let section = document.createElement('section');
   section.classList = 'container';
 
@@ -153,7 +157,10 @@ export function mostrarCategorias(dom, array) {
       </div>
     `;
 
-    article.onclick = () => {window.location.href = `${urlBuscador}?categoria=${element}`}
+    article.onclick = () => {
+      sessionStorage.setItem('categorias', element);
+      window.location.href = `${urlBuscador}?categoria=${element}`;
+    }
 
     div.appendChild(article);
 
@@ -206,16 +213,6 @@ export function copiarArray(arrayDeseado, arrayDestino) {
   });
 }
 
-export function mostrarFiltrosDisponiblesDe(nombreFiltro, copiaTodosLosProductos) {
-  const arrayFiltro = [];
-  copiaTodosLosProductos.forEach(element => {
-    if (arrayFiltro.indexOf(element.nombreFiltro) === -1) {
-      arrayFiltro.push(element.nombreFiltro);
-    }
-  });
-  return arrayFiltro;
-}
-
 function agregarParrafoFiltro(idDOM, nombre, cantidad) {
 
   // DOM
@@ -223,10 +220,17 @@ function agregarParrafoFiltro(idDOM, nombre, cantidad) {
 
   // Crear parrafo
   let p = document.createElement('p');
-  p.classList = 'm-0';
+  p.classList = 'm-1';
   p.innerHTML = `
-  <a class="text-decoration-none text-dark">${nombre} <span class="text-secondary">${cantidad}</span></a>
+  <a class="text-decoration-none text-dark">${nombre} <span class="text-secondary">(${cantidad})</span></a>
   `;
+
+  p.onclick = () => {
+    // Actualizar filtro en storage
+    sessionStorage.setItem(idDOM, nombre);
+    // Recargar pagina
+    recargar();
+  }
 
   // Agregarlo
   dom.appendChild(p);
@@ -299,6 +303,112 @@ export function mostrarMarca(copiaTodosLosProductos) {
 
 }
 
-export function filtroAMostrarEnBuscador(nombreFiltro) {
+export function mostrarFiltrosActivos(dom) {
   
+  // DOM
+  const filtrosActivos = document.getElementById(dom);
+  const divFiltros     = filtrosActivos.children[1];
+
+  // Limpiar filtros
+  divFiltros.innerHTML = '';
+
+  // Variables
+  let categorias = sessionStorage.getItem('categorias');
+  let marcas = sessionStorage.getItem('marcas');
+
+  // Si hay algun filtro, mostrar seccion
+  if (categorias || marcas) {
+    filtrosActivos.classList.remove('d-none');
+  }else{
+    filtrosActivos.classList.add('d-none');
+  }
+
+  // Si hay un filtro de categoria, mostrar
+  if (categorias) {
+
+    let div = document.createElement('div');
+    div.classList = 'col-auto bg-primary rounded px-4 py-1 m-1 position-relative';
+    div.innerHTML = `
+      <a class="text-decoration-none text-white">${categorias}<span class="cross">x</span></a>
+    `;
+
+    div.onclick = () => {
+      sessionStorage.removeItem('categorias');
+      recargar();
+    }
+
+    divFiltros.appendChild(div);
+    
+  }
+
+  // Si hay un filtro de marca, mostrar
+  if (marcas) {
+
+    let div = document.createElement('div');
+    div.classList = 'col-auto bg-primary rounded px-4 py-1 m-1 position-relative';
+    div.innerHTML = `
+      <a class="text-decoration-none text-white">${marcas}<span class="cross">x</span></a>
+    `;
+
+    div.onclick = () => {
+      sessionStorage.removeItem('marcas');
+      recargar();
+    }
+
+    divFiltros.appendChild(div);
+
+  }
+
+}
+
+function recargar() {
+  correrBusqueda();
+}
+
+export function correrBusqueda() {
+
+  // Dom - ubicar donde poner los productos
+  const resultadosDOM = document.getElementById('resultados');
+
+  // Copiar array original
+  copiarArray(todosLosProductos, copiaTodosLosProductos);
+
+  // Mostrar filtros activos
+  mostrarFiltrosActivos('filtros-activos');
+
+  // Almacenar resultados del filtrado
+  const arrayFiltrado = aplicarFiltros(copiaTodosLosProductos);
+
+  // Mostrar productos encontrados
+  arrayFiltrado.length > 0 ? mostrarProductos('resultados','Resultados', arrayFiltrado, arrayFiltrado.length, resultadosDOM) : resultadosDOM.innerHTML = `<h3 class="text-center pt-5">No se encontraron resultados</h3>`;
+
+  // Limpiar
+  limpiar('categorias');
+  limpiar('marcas');
+
+  // Mostrar categorias para filtrar
+  mostrarCategoria(arrayFiltrado);
+  
+  // Mostrar marcas para filtrar
+  mostrarMarca(arrayFiltrado);
+
+}
+
+function aplicarFiltros(copiaTodosLosProductos) {
+
+  // Variables
+  let categorias = sessionStorage.getItem('categorias') || '';
+  let marcas = sessionStorage.getItem('marcas') || '';
+
+  // Filtrar
+  copiaTodosLosProductos = copiaTodosLosProductos.filter((el) => el.categoria.includes(categorias));
+  copiaTodosLosProductos = copiaTodosLosProductos.filter((el) => el.marca.includes(marcas));
+
+  return copiaTodosLosProductos;
+
+}
+
+function limpiar(idElemento) {
+  const dom = document.getElementById(idElemento);
+  dom.innerHTML = '';
 }
