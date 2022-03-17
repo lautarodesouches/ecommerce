@@ -2,7 +2,7 @@
 
 import {showMenu} from "../modules/menu.mjs";
 import {showFooter} from "../modules/footer.mjs";
-import {copiarArray, mostrarError, mostrarProductos} from "../modules/funciones.mjs";
+import {copiarArray, mostrarError, mostrarProductos, mostrarCategoria, mostrarMarca} from "../modules/funciones.mjs";
 import {cargarProductos} from "../modules/promesas.mjs";
 import {todosLosProductos, copiaTodosLosProductos} from "../modules/arrays.mjs";
 
@@ -16,6 +16,8 @@ const resultadosDOM = document.getElementById('resultados');
 cargarProductos()
 .then( () => {
     copiarArray(todosLosProductos, copiaTodosLosProductos);
+    mostrarCategoria(copiaTodosLosProductos);
+    mostrarMarca(copiaTodosLosProductos);
     mostrarProductos('resultados','Resultados', copiaTodosLosProductos, copiaTodosLosProductos.length, resultadosDOM);
 })
 .catch( (res) => {

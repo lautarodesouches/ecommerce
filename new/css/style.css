@@ -64,6 +64,10 @@
 
 /* Coustom start */
 
+a{
+  cursor: pointer;
+}
+
 .logo{
   width: 75%;
 }
@@ -140,6 +144,17 @@
   cursor: pointer;
   background: rgb(69, 69, 230);
   color: white;
+}
+
+.cross {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  color: black !important;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
 
 @media (min-width:768px){

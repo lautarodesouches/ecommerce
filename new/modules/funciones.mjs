@@ -1,7 +1,7 @@
 // ---------------------------------------- Importar
 
 import {urlProducto, urlCarpetaImg, urlInicio, urlBuscador} from "../modules/urls.mjs";
-import {todosLosProductos} from "../modules/arrays.mjs";
+import {copiaTodosLosProductos, todosLosProductos} from "../modules/arrays.mjs";
 
 // ---------------------------------------- Exportar
 
@@ -119,6 +119,9 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
 
 export function mostrarError(main, error) {
 
+  // Limpiar DOM
+  main.innerHTML = '';
+
   let section = document.createElement('section');
   section.classList = 'text-center mh-700 pt-5';
   section.innerHTML = `
@@ -201,4 +204,101 @@ export function copiarArray(arrayDeseado, arrayDestino) {
   arrayDeseado.forEach(element => {
       arrayDestino.push(element)
   });
+}
+
+export function mostrarFiltrosDisponiblesDe(nombreFiltro, copiaTodosLosProductos) {
+  const arrayFiltro = [];
+  copiaTodosLosProductos.forEach(element => {
+    if (arrayFiltro.indexOf(element.nombreFiltro) === -1) {
+      arrayFiltro.push(element.nombreFiltro);
+    }
+  });
+  return arrayFiltro;
+}
+
+function agregarParrafoFiltro(idDOM, nombre, cantidad) {
+
+  // DOM
+  const dom = document.getElementById(idDOM);
+
+  // Crear parrafo
+  let p = document.createElement('p');
+  p.classList = 'm-0';
+  p.innerHTML = `
+  <a class="text-decoration-none text-dark">${nombre} <span class="text-secondary">${cantidad}</span></a>
+  `;
+
+  // Agregarlo
+  dom.appendChild(p);
+
+}
+
+export function mostrarCategoria(copiaTodosLosProductos) {
+
+  // Ordenar por categoria
+  copiaTodosLosProductos.sort((a, b) => {
+    if (a.categoria > b.categoria) {
+        return 1;
+    }
+    if (a.categoria < b.categoria) {
+        return -1;
+    }
+    // a es igual a b
+    return 0;
+  })
+
+  let contador = 0;
+
+  // Copiar categorias a array
+  for (let i = 0; i < copiaTodosLosProductos.length; i++) {
+
+    // Contar un producto mas de la categoria
+    contador++;
+
+    // Si es el ultimo numero del array o si el nombre de la categoria actual es diferente a la siguiente, agregar
+    if (i === (copiaTodosLosProductos.length - 1) || (copiaTodosLosProductos[i].categoria !== copiaTodosLosProductos[i+1].categoria)) {
+      
+      agregarParrafoFiltro('categorias', copiaTodosLosProductos[i].categoria, contador);
+      contador = 0;
+
+    }
+  }
+
+}
+
+export function mostrarMarca(copiaTodosLosProductos) {
+
+  // Ordenar por marca
+  copiaTodosLosProductos.sort((a, b) => {
+    if (a.marca > b.marca) {
+        return 1;
+    }
+    if (a.marca < b.marca) {
+        return -1;
+    }
+    // a es igual a b
+    return 0;
+  })
+
+  let contador = 0;
+
+  // Copiar categorias a array
+  for (let i = 0; i < copiaTodosLosProductos.length; i++) {
+
+    // Contar un producto mas de la categoria
+    contador++;
+
+    // Si es el ultimo numero del array o si el nombre de la categoria actual es diferente a la siguiente, agregar
+    if (i === (copiaTodosLosProductos.length - 1) || (copiaTodosLosProductos[i].marca !== copiaTodosLosProductos[i+1].marca)) {
+      
+      agregarParrafoFiltro('marcas', copiaTodosLosProductos[i].marca, contador);
+      contador = 0;
+
+    }
+  }
+
+}
+
+export function filtroAMostrarEnBuscador(nombreFiltro) {
+  
 }

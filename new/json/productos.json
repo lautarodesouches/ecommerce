@@ -2,7 +2,7 @@
     {
         "id": 1,
         "nombre": "Notebook Asus",
-        "marca": "Exo Smart",
+        "marca": "Asus",
         "categoria": "Notebooks",
         "precio": 48999,
         "cantidadDisponible": 60,
@@ -13,7 +13,7 @@
             "gris",
             "negro"
         ],
-        "descripcion": "La notebook EXO Smart P33 es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina.",
+        "descripcion": "La notebook Asus es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina.        ",
         "destino": "products/"
     },
     {
