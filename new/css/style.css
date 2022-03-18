@@ -162,6 +162,14 @@ a{
   cursor: pointer;
 }
 
+#addFavourite{
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem 1rem 0 0;
+}
+
 @media (min-width:768px){
 
   .logo{
