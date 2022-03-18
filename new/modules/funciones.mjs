@@ -322,8 +322,6 @@ export function mostrarFiltrosActivos(dom) {
     filtrosActivos.classList.add('d-none');
   }
 
-  console.log(busqueda)
-
   // Si hay un filtro de busqueda, mostrar
   busqueda && mostrarFiltro(busqueda, 'busqueda', divFiltros);
 
@@ -375,6 +373,9 @@ export function correrBusqueda() {
   limpiar('marcas');
   limpiar('resultados');
 
+  // Manejar opciones orden
+  opcionesOrden();
+
   // Ordenar
   ordenar(arrayFiltrado);
 
@@ -421,15 +422,43 @@ function ordenarMayorPrecio(arrayAOrdenar) {
 }
 
 function ordenarRandom(arrayAOrdenar) {
-  arrayAOrdenar.sort((a, b) => Math.random(1) - Math.random(1));
+  arrayAOrdenar.sort(() => Math.random(1) - Math.random(1));
 }
 
 function ordenar(arrayAOrdenar) {
 
   let orden = sessionStorage.getItem('orden');
 
-  orden === 'precioMenorAMayor' && ordenarMenorPrecio(arrayAOrdenar);
-  orden === 'precioMayorAMenor' && ordenarMayorPrecio(arrayAOrdenar);
-  (orden === 'random' || orden === null) && ordenarRandom(arrayAOrdenar);
+  orden === 'Menor Precio' && ordenarMenorPrecio(arrayAOrdenar);
+  orden === 'Mayor Precio' && ordenarMayorPrecio(arrayAOrdenar);
+  (orden === 'Random' || orden === null) && ordenarRandom(arrayAOrdenar);
   
+}
+
+function opcionesOrden() {
+  
+  const ordenActual = document.getElementById('abrirOpcionesOrden');
+  const contenedorOpciones = document.getElementById('opcionesOrden');
+  const listaOpciones = contenedorOpciones.children[0].children;
+
+  // Poner valor actual
+  ordenActual.children[0].innerText = sessionStorage.getItem('orden');
+
+  // Mostrar opciones de orden
+  ordenActual.onclick = () => {contenedorOpciones.classList.toggle('d-none')};
+
+  // Por cada orden listado
+  for (let i = 0; i < listaOpciones.length; i++) {
+    listaOpciones[i].onclick = () => {
+      // Cambiar opcion orden en storage
+      sessionStorage.setItem('orden', listaOpciones[i].innerText);
+      // Correr busqueda para actualizar
+      correrBusqueda();
+      // Cerrar lista
+      contenedorOpciones.classList.toggle('d-none');
+      // Cambiar orden actual
+      ordenActual.children[0].innerText = listaOpciones[i].innerText;
+    }
+  }
+
 }

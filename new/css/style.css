@@ -140,10 +140,15 @@ a{
   height: 200px;
 }
 
-#abrirOpcionesOrden:hover, #OpcionesOrden ul li:hover{
+#abrirOpcionesOrden:hover, #opcionesOrden ul li:hover{
   cursor: pointer;
   background: rgb(69, 69, 230);
   color: white;
+}
+
+#opcionesOrden{
+  position: absolute;
+  width: 100%;
 }
 
 .cross {
