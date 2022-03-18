@@ -170,6 +170,47 @@ a{
   padding: 0.5rem 1rem 0 0;
 }
 
+.previewImg:hover{
+  border: 1px solid #0d6efd!important;
+}
+
+.opcionesCantidad{
+  top: 0;
+  left: 0;
+}
+
+/* Colores de productos */
+
+.bg-rojo{
+  background-color: red;
+  color: white;
+}
+
+.bg-blanco{
+  background-color: white;
+  color: black;
+}
+
+.bg-gris{
+  background-color: grey;
+  color: white;
+}
+
+.bg-negro{
+  background-color: black;
+  color: white;
+}
+
+.bg-azul{
+  background-color: blue;
+  color: white;
+}
+
+.bg-verde{
+  background-color: green;
+  color: white;
+}
+
 @media (min-width:768px){
 
   .logo{

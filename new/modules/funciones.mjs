@@ -462,3 +462,89 @@ function opcionesOrden() {
   }
 
 }
+
+export function manejarImagesProducto(id, numeroImagenPrincipal) {
+  mostrarImagenesPreview(id, numeroImagenPrincipal);
+  mostrarImagenPricipal(id, numeroImagenPrincipal);
+}
+
+function mostrarImagenesPreview(id, numeroImagenPrincipal) {
+
+  const imagenesPreviewDom = document.getElementById('imagenes').children[0].children[0];
+
+  // Limpiar DOM para no acumular imagenes
+  imagenesPreviewDom.innerHTML = '';
+  
+  for (let i = 1; i < todosLosProductos[id].imagenesDisponibles + 1; i++) {
+    
+    let imagen = document.createElement('div');
+    imagen.classList = 'my-2 border rounded previewImg';
+    imagen.innerHTML = `
+      <img src="${urlCarpetaImg}${parseInt(id)+1}-${i}.png" alt="Imagen previa numero ${i} del producto" class="w-100">
+    `;
+
+    // Si es la imagen actual, agregar borde azul
+    if (i === numeroImagenPrincipal) {
+      imagen.classList.add('border-primary');
+    }
+
+    imagenesPreviewDom.appendChild(imagen);
+
+    imagen.onclick = () => {manejarImagesProducto(id, i)}
+
+  }
+
+}
+
+function mostrarImagenPricipal(id, numeroImagen) {
+  const imagenPrincipalDom = document.getElementById('imagenes').children[0].children[1];
+  imagenPrincipalDom.innerHTML = `
+    <img src="${urlCarpetaImg}${parseInt(id)+1}-${numeroImagen}.png" alt="Imagen ${numeroImagen} del producto" class="w-75">
+  `;
+}
+
+export function mostrarNombreProducto(id, dom) {
+  dom.innerText = todosLosProductos[id].nombre;
+}
+
+export function mostrarColores(id, dom) {
+  todosLosProductos[id].coloresDisponibles.forEach(element => {
+    
+    let contenedor = document.createElement('div');
+    contenedor.classList = 'col-4 mb-3';
+    contenedor.innerHTML = `<div class="border w-100 rounded bg-${element.toLowerCase()} cursor-pointer">${element}</div>`;
+    
+    dom.appendChild(contenedor);
+
+  });
+}
+
+export function mostrarDescripcion(id, dom) {
+  dom.innerText = todosLosProductos[id].descripcion;
+}
+
+export function manejarCantidades(id) {
+
+  const domSeleccionar = document.getElementById('opciones').children[0].children[0].children[0];
+  const domCantidadDisp = document.getElementById('opciones').children[0].children[1].children[0].children[0];
+
+  // Abrir lista cantidades
+  domSeleccionar.children[1].onclick = () => {domSeleccionar.children[2].classList.toggle('d-none')}
+  // Al hacer click en la lista de opciones cantidad
+  domSeleccionar.children[2].onclick = (e) => {
+    // Cambiar valor arriba
+    domSeleccionar.children[1].children[0].innerText = e.target.innerText, 
+    // Cerrar lista
+    domSeleccionar.children[2].classList.toggle('d-none')
+    // Mostrar disponibles menos seleccionados
+    cantidadesDisponibles(id, domCantidadDisp, domSeleccionar.children[1].innerText);
+  }
+
+  // Mostrar disponibles menos seleccionados
+  cantidadesDisponibles(id, domCantidadDisp, domSeleccionar.children[1].innerText);
+  
+}
+
+function cantidadesDisponibles(id, dom, cantidadSelec) {
+  dom.innerText = todosLosProductos[id].cantidadDisponible - cantidadSelec;
+}
