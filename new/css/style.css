@@ -223,6 +223,10 @@ a{
   right: 0;
 }
 
+.prodCart img{
+  width: 75%;
+}
+
 @media (min-width:768px){
 
   .logo{
@@ -244,6 +248,15 @@ a{
   
   #resultados .articulo{
     min-height: 450px !important;
+  }
+
+  .prodCart{
+    height: 150px;
+  }
+  
+  .prodCart img{
+    width: auto;
+    height: 100px;
   }
 
 }

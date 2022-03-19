@@ -1,7 +1,8 @@
 // ---------------------------------------- Importar
 
-import {urlProducto, urlCarpetaImg, urlInicio, urlBuscador, urlCarrito, urlFavoritos} from "../modules/urls.mjs";
-import {todosLosProductos, copiaTodosLosProductos, favoritos} from "../modules/arrays.mjs";
+import {urlProducto, urlCarpetaImg, urlBuscador, urlCarrito, urlFavoritos, urlInicio, urlPagar} from "../modules/urls.mjs";
+import {todosLosProductos, copiaTodosLosProductos, favoritos, carrito} from "../modules/arrays.mjs";
+import {showMenu} from "./menu.mjs";
 
 // ---------------------------------------- Exportar
 
@@ -211,7 +212,7 @@ export function noHayFavoritos(dom) {
       <h5>Podés agregar productos a favoritos para poder verlos o comprarlos más tarde.</h5>
   </div>
   <a href="${urlBuscador}">
-      <h3>Empezá a buscar productos para agregar acá</h3>
+      <button class="btn btn-primary">Buscar productos</button>
   </a>
   `;
   
@@ -598,9 +599,10 @@ export function manejarCantidades(id) {
     botonAgregar.classList.remove('disabled');
   }
 
-  // Botones
+  // Boton comprar
   botonComprar.onclick = () => {agregarProducto(id, cantidadSeleccionada); window.location.href = urlCarrito;}
-  botonAgregar.onclick = () => {agregarProducto(id, cantidadSeleccionada)}
+  // Boton agregar a carrito
+  botonAgregar.onclick = () => {agregarProducto(id, cantidadSeleccionada); showMenu()}
 
 }
 
@@ -610,9 +612,6 @@ function cantidadesDisponibles(id, domDisponibles) {
 }
 
 function agregarProducto(id, cantidad) {
-
-  // Obtener datos del carrito
-  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
   
   // Buscar si el producto que se quiere agregar esta en el carrito
   let auxiliar = carrito.find( (el) => el.producto.id === (id+1) );
@@ -707,6 +706,111 @@ export function mostrarEstadoFavorito(productId, dom) {
         <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
       </svg>
     `;
+  }
+
+}
+
+export function mostrarCarrito(dom) {
+
+  dom.innerHTML = '';
+
+  if (carrito.length > 0) {
+
+    carrito.forEach(element => {
+
+      let precio = element.cantidad * element.producto.precio;
+
+      let article = document.createElement('article');
+      article.classList = 'container p-3 position-relative bg-white border-top prodCart';
+      article.innerHTML = `
+        <div class="row align-items-center justify-content-center">
+            <section class="col-12 col-md-2 my-3 my-md-0" id="imagen">
+                <img src="${urlCarpetaImg}${element.producto.id}-1.png" alt="Imagen ${element.producto.nombre}">
+            </section>
+            <section class="col-12 col-md-4 my-3 my-md-0" id="detalles">
+                <h4>${element.producto.nombre}</h4>
+            </section>
+            <section class="col-12 col-md-5 my-3 my-md-0" id="precio">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-12 col-md-6 my-3 my-md-0">
+                        <p class="text-secondary">Cantidad:</p>
+                        <h4>${element.cantidad}</h4>
+                    </div>
+                    <div class="col-12 col-md-6 my-3 my-md-0">
+                        <p class="text-secondary">Subtotal:</p>
+                        <h4>${formatearNumero(precio)}</h4>
+                    </div>
+                </div>
+            </section>
+        </div>
+      `;
+
+      // Agregar boton para quitar
+      let divButton = document.createElement('div');
+      divButton.id = 'quitar';
+      divButton.innerHTML = '<button class="btn btn-sm btn-danger">x</button>';
+
+      divButton.onclick = () => {
+        // Borrar de array carrito
+        carrito.splice(carrito.indexOf(element),1);
+        // Acutalizar en local
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        // Recargar menu y productos en carrito
+        showMenu();
+        mostrarCarrito(dom);
+      };
+
+      article.appendChild(divButton);
+
+      // Añadir articulo al dom
+      dom.appendChild(article);
+
+    });
+
+    let total = carrito.reduce((acc,el) => acc + el.producto.precio * el.cantidad, 0);
+
+    let section = document.createElement('section');
+    section.classList = 'container px-3 py-5 border-top bg-white';
+    section.innerHTML = `
+      <div class="row align-items-center justify-content-center">
+          <div class="col-12 col-md-3">
+              <h5>Total:</h5>
+          </div>
+          <div class="col-12 col-md-3">
+              <h5 id="total">${formatearNumero(total)}</h5>
+          </div>
+      </div>
+      <a href="${urlPagar}">
+        <button class="btn btn-primary w-75 mt-5" id="pagar">Pasar a pago</button>
+      </a>
+    `;
+
+    dom.appendChild(section)
+
+    /*
+    <section class="container px-3 py-5 border-top">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-12 col-md-3">
+                <h5>Total:</h5>
+            </div>
+            <div class="col-12 col-md-3">
+                <h5 id="total">$123</h5>
+            </div>
+        </div>
+        <button class="btn btn-primary w-75 mt-5" id="pagar">Pasar a pago</button>
+    </section>
+
+    */
+
+  }else{
+
+    dom.innerHTML = `
+      <h3 class="mt-5">No se encontraror productos en la canasta<h3>
+      <a href="${urlInicio}">
+        <button class="btn btn-primary mt-4 px-5"><h5>Ir a inicio</h5></button>
+      </a>
+    `;
+
   }
 
 }
