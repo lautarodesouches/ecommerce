@@ -16,7 +16,7 @@ const urlParams     = new URLSearchParams(queryString);
 // Obtener parametro productId
 const productId     = urlParams.get('id') - 1;
 // Si no se puede obtener el id del producto, volvera pagina principal
-productId === null && (window.location.href = urlInicio);
+productId === -1 && (window.location.href = urlInicio);
 
 // ---------------------------------------- DOM
 
@@ -24,8 +24,6 @@ const main = document.getElementsByTagName('main')[0];
 const nombreDom = document.getElementById('detalles').children[0];
 const coloresDom = document.getElementById('detalles').children[1].children[1];
 const descripDom = document.getElementById('detalles').children[2].children[1];
-
-console.log()
 
 // ---------------------------------------- Promesa
 

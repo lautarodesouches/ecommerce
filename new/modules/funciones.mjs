@@ -1,6 +1,6 @@
 // ---------------------------------------- Importar
 
-import {urlProducto, urlCarpetaImg, urlInicio, urlBuscador} from "../modules/urls.mjs";
+import {urlProducto, urlCarpetaImg, urlInicio, urlBuscador, urlCarrito} from "../modules/urls.mjs";
 import {todosLosProductos, copiaTodosLosProductos} from "../modules/arrays.mjs";
 
 // ---------------------------------------- Exportar
@@ -512,7 +512,7 @@ export function mostrarColores(id, dom) {
     
     let contenedor = document.createElement('div');
     contenedor.classList = 'col-4 mb-3';
-    contenedor.innerHTML = `<div class="border w-100 rounded bg-${element.toLowerCase()} cursor-pointer">${element}</div>`;
+    contenedor.innerHTML = `<div class="border w-100 rounded bg-${element.toLowerCase()}">${element}</div>`;
     
     dom.appendChild(contenedor);
 
@@ -523,28 +523,97 @@ export function mostrarDescripcion(id, dom) {
   dom.innerText = todosLosProductos[id].descripcion;
 }
 
+function mostrarPrecio(id, dom, cantidad) {
+  dom.innerText = formatearNumero(todosLosProductos[id].precio * cantidad);
+}
+
 export function manejarCantidades(id) {
 
-  const domSeleccionar = document.getElementById('opciones').children[0].children[0].children[0];
-  const domCantidadDisp = document.getElementById('opciones').children[0].children[1].children[0].children[0];
+  // DOM
+  const precioDom = document.getElementById('opciones').children[0];
+  const domSeleccionar = document.getElementById('opciones').children[1].children[0].children[0];
+  const domCantidadDisp = document.getElementById('opciones').children[1].children[1].children[0].children[0];
+  const botonComprar = document.getElementById('opciones').children[2].children[0];
+  const botonAgregar = document.getElementById('opciones').children[3].children[0];
 
   // Abrir lista cantidades
   domSeleccionar.children[1].onclick = () => {domSeleccionar.children[2].classList.toggle('d-none')}
+
   // Al hacer click en la lista de opciones cantidad
   domSeleccionar.children[2].onclick = (e) => {
     // Cambiar valor arriba
-    domSeleccionar.children[1].children[0].innerText = e.target.innerText, 
+    domSeleccionar.children[1].children[0].innerText = e.target.innerText;
     // Cerrar lista
-    domSeleccionar.children[2].classList.toggle('d-none')
-    // Mostrar disponibles menos seleccionados
-    cantidadesDisponibles(id, domCantidadDisp, domSeleccionar.children[1].innerText);
+    domSeleccionar.children[2].classList.toggle('d-none');
+    // Volver a correr funcion
+    manejarCantidades(id);
   }
 
   // Mostrar disponibles menos seleccionados
-  cantidadesDisponibles(id, domCantidadDisp, domSeleccionar.children[1].innerText);
-  
+  cantidadesDisponibles(id, domCantidadDisp);
+
+  // Cantidad seleccionada es igual a el texto en Dom como numero
+  let cantidadSeleccionada = parseInt(domSeleccionar.children[1].innerText);
+
+  // MostrarPrecio
+  mostrarPrecio(id, precioDom, cantidadSeleccionada);
+
+  // Si la cantidad seleccionada es mayor a la disponible
+  if (todosLosProductos[id].cantidadDisponible - cantidadSeleccionada < 0) {
+    
+    // Deshabilitar botones
+    botonComprar.classList.add('disabled');
+    botonAgregar.classList.add('disabled');
+
+    // Mostrar advertencia
+    Toastify({
+      text: `Solo hay ${todosLosProductos[id].cantidadDisponible} disponibles`,
+      duration: 5000,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      style: {
+        background: "#ff8800",
+        color: "white"
+      },
+      onClick: function(){} // Callback after click
+    }).showToast();
+
+  }else{
+    // Habilitar botones
+    botonComprar.classList.remove('disabled');
+    botonAgregar.classList.remove('disabled');
+  }
+
+  // Botones
+  botonComprar.onclick = () => {agregarProducto(id, cantidadSeleccionada); window.location.href = urlCarrito;}
+  botonAgregar.onclick = () => {agregarProducto(id, cantidadSeleccionada)}
+
 }
 
-function cantidadesDisponibles(id, dom, cantidadSelec) {
-  dom.innerText = todosLosProductos[id].cantidadDisponible - cantidadSelec;
+function cantidadesDisponibles(id, domDisponibles) {
+  // Mostrar disponible
+  domDisponibles.innerText = todosLosProductos[id].cantidadDisponible;
+}
+
+function agregarProducto(id, cantidad) {
+
+  // Obtener datos del carrito
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+  
+  // Buscar si el producto que se quiere agregar esta en el carrito
+  let auxiliar = carrito.find( (el) => el.producto.id === (id+1) );
+
+  // Si está, sumar cantidades y borrar original
+  if (auxiliar !== undefined) {
+    cantidad += auxiliar.cantidad;
+    carrito.splice(carrito.indexOf(auxiliar));
+  }
+
+  // Agregar un objeto con el producto a comprar y la cantidad 
+  carrito.push({producto: todosLosProductos[id], cantidad: cantidad});
+
+  // Almacenar
+  localStorage.setItem('carrito', JSON.stringify(carrito));
+
 }

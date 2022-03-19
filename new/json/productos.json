@@ -5,7 +5,7 @@
         "marca": "Asus",
         "categoria": "Notebooks",
         "precio": 48999,
-        "cantidadDisponible": 60,
+        "cantidadDisponible": 2,
         "envioGratis": false,
         "imagenesDisponibles": 5,
         "coloresDisponibles": [

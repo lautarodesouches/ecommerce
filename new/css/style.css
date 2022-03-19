@@ -177,6 +177,11 @@ a{
 .opcionesCantidad{
   top: 0;
   left: 0;
+  z-index: 99;
+}
+
+.opcionesCantidad p:hover{
+  cursor: pointer;
 }
 
 /* Colores de productos */
