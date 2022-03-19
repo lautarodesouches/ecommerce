@@ -75,7 +75,7 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
     </section>
   `;
 
-  // Si la cantidad requerida es mayor al array, usar array
+  // Si no hay la cantida de productos requeridos para mostrar, mostrar todos los que haya
   cantidad > array.length && (cantidad = array.length);
 
   for (let i = 0; i < cantidad; i++) {
@@ -114,11 +114,16 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
     article.children[0].onmouseover = () => {article.children[0].children[numeroChildren].classList.toggle('d-md-none')};
     article.children[0].onmouseout = () => {article.children[0].children[numeroChildren].classList.toggle('d-md-none')};
 
-    // Redirigir a pagina del producto
-    article.children[0].onclick = () => {window.location.href = `${urlProducto}?id=${array[i].id}`};
+    // Guardar id en variable porque cambia
+    let arrayID = array[i].id;
+
+    // Click en el cuerpo -> redirigir a pagina del producto
+    article.children[0].onclick = () => {window.location.href = `${urlProducto}?id=${arrayID}`};
+
+    // Click en la estrella
     article.children[1].onclick = () => {
       // Agregar o quitar de favoritos
-      agregarOQuitarFavoritos(array[i].id - 1, estadoFavorito);
+      agregarOQuitarFavoritos(arrayID - 1, estadoFavorito);
       // Si esta en la pagina de favoritos, recargar pagina para que no muestre el producto quitado
       window.location.href.includes(urlFavoritos) && window.location.reload();
     };
@@ -205,7 +210,7 @@ export function noHayFavoritos(dom) {
       <h3>No se encontraron favoritos agregados!</h3>
       <h5>Podés agregar productos a favoritos para poder verlos o comprarlos más tarde.</h5>
   </div>
-  <a href="${urlInicio}">
+  <a href="${urlBuscador}">
       <h3>Empezá a buscar productos para agregar acá</h3>
   </a>
   `;
@@ -450,7 +455,7 @@ function opcionesOrden() {
   const listaOpciones = contenedorOpciones.children[0].children;
 
   // Poner valor actual
-  ordenActual.children[0].innerText = sessionStorage.getItem('orden');
+  ordenActual.children[0].innerText = sessionStorage.getItem('orden') || 'Random';
 
   // Mostrar opciones de orden
   ordenActual.onclick = () => {contenedorOpciones.classList.toggle('d-none')};

@@ -76,6 +76,11 @@ export function showMenu() {
                         Favoritos
                     </a>
                 </div>
+                <div class="col-12 col-md-2">
+                    <a href="${urlBuscador}" class="text-decoration-none text-white">
+                        Productos
+                    </a>
+                </div>
                 <div class="col-12 col-md-2 d-md-none mt-2">
                     <a href="${urlIniciarSesion}" class="text-decoration-none text-white">
                         Ingresar
