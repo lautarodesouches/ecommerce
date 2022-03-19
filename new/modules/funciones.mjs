@@ -89,7 +89,7 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
     array[i].envioGratis && (h5EnvioGratis = '<h5 class="text-success">Envío Gratis!</h5>', numeroChildren++);
 
     let article = document.createElement('article');
-    article.classList = 'col-12 col-md-3 p-2 articulo';
+    article.classList = 'col-12 col-md-3 p-2 articulo position-relative';
     article.innerHTML = `
       <div class="rounded border bg-white p-3 articulo-principal">
         <div class="contenedor-img">
@@ -102,6 +102,12 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
       </div>
     `;
 
+    let estadoFavorito = document.createElement('div');
+    estadoFavorito.classList = 'addFavourite';
+    mostrarEstadoFavorito(array[i].id, estadoFavorito);
+    article.appendChild(estadoFavorito)
+
+    // Agrear a dom
     section.children[1].appendChild(article);
 
     // Eventos
@@ -109,7 +115,8 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
     article.children[0].onmouseout = () => {article.children[0].children[numeroChildren].classList.toggle('d-md-none')};
 
     // Redirigir a pagina del producto
-    article.onclick = () => {window.location.href = `${urlProducto}?id=${array[i].id}`};
+    article.children[0].onclick = () => {window.location.href = `${urlProducto}?id=${array[i].id}`};
+    article.children[1].onclick = () => {agregarOQuitarFavoritos(array[i].id, estadoFavorito);};
       
   }
   

@@ -149,6 +149,7 @@ a{
 #opcionesOrden{
   position: absolute;
   width: 100%;
+  z-index: 99;
 }
 
 .cross {
@@ -162,7 +163,7 @@ a{
   cursor: pointer;
 }
 
-#addFavourite{
+.addFavourite{
   cursor: pointer;
   position: absolute;
   top: 0;

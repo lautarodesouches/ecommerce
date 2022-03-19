@@ -24,7 +24,7 @@ const main = document.getElementsByTagName('main')[0];
 const nombreDom = document.getElementById('detalles').children[0];
 const coloresDom = document.getElementById('detalles').children[1].children[1];
 const descripDom = document.getElementById('detalles').children[2].children[1];
-const favoritosDom = document.getElementById('addFavourite');
+const favoritosDom = document.getElementsByClassName('addFavourite')[0];
 
 // ---------------------------------------- Promesa
 
