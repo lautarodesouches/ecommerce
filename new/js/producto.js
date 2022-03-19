@@ -5,7 +5,7 @@ import {showFooter} from "../modules/footer.mjs";
 import {cargarProductos} from "../modules/promesas.mjs";
 import {urlInicio} from "../modules/urls.mjs";
 
-import {manejarImagesProducto, mostrarColores, mostrarError, mostrarNombreProducto, mostrarDescripcion, manejarCantidades} from "../modules/funciones.mjs";
+import {manejarImagesProducto, mostrarColores, mostrarError, mostrarNombreProducto, mostrarDescripcion, manejarCantidades, agregarOQuitarFavoritos, mostrarEstadoFavorito} from "../modules/funciones.mjs";
 import {todosLosProductos} from "../modules/arrays.mjs";
 
 // ---------------------------------------- Ver Url
@@ -24,6 +24,7 @@ const main = document.getElementsByTagName('main')[0];
 const nombreDom = document.getElementById('detalles').children[0];
 const coloresDom = document.getElementById('detalles').children[1].children[1];
 const descripDom = document.getElementById('detalles').children[2].children[1];
+const favoritosDom = document.getElementById('addFavourite');
 
 // ---------------------------------------- Promesa
 
@@ -47,6 +48,8 @@ cargarProductos()
     mostrarColores(productId, coloresDom);
     mostrarDescripcion(productId, descripDom);
     manejarCantidades(productId);
+    mostrarEstadoFavorito(productId, favoritosDom);
+    favoritosDom.onclick = () => {agregarOQuitarFavoritos(productId, favoritosDom);}
 })
 .catch( (res) => {
     mostrarError(main, res);
