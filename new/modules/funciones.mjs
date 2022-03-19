@@ -1,6 +1,6 @@
 // ---------------------------------------- Importar
 
-import {urlProducto, urlCarpetaImg, urlInicio, urlBuscador, urlCarrito} from "../modules/urls.mjs";
+import {urlProducto, urlCarpetaImg, urlInicio, urlBuscador, urlCarrito, urlFavoritos} from "../modules/urls.mjs";
 import {todosLosProductos, copiaTodosLosProductos, favoritos} from "../modules/arrays.mjs";
 
 // ---------------------------------------- Exportar
@@ -104,7 +104,7 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
 
     let estadoFavorito = document.createElement('div');
     estadoFavorito.classList = 'addFavourite';
-    mostrarEstadoFavorito(array[i].id, estadoFavorito);
+    mostrarEstadoFavorito(array[i].id - 1, estadoFavorito);
     article.appendChild(estadoFavorito)
 
     // Agrear a dom
@@ -116,7 +116,12 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
 
     // Redirigir a pagina del producto
     article.children[0].onclick = () => {window.location.href = `${urlProducto}?id=${array[i].id}`};
-    article.children[1].onclick = () => {agregarOQuitarFavoritos(array[i].id, estadoFavorito);};
+    article.children[1].onclick = () => {
+      // Agregar o quitar de favoritos
+      agregarOQuitarFavoritos(array[i].id - 1, estadoFavorito);
+      // Si esta en la pagina de favoritos, recargar pagina para que no muestre el producto quitado
+      window.location.href.includes(urlFavoritos) && window.location.reload();
+    };
       
   }
   
@@ -234,7 +239,7 @@ function agregarParrafoFiltro(idDOM, nombre, cantidad) {
     // Actualizar filtro en storage
     sessionStorage.setItem(idDOM, nombre);
     // Recargar pagina
-    recargar();
+    correrBusqueda();
   }
 
   // Agregarlo
@@ -350,15 +355,11 @@ function mostrarFiltro(valor, remover, dom) {
 
   div.onclick = () => {
     sessionStorage.removeItem(remover);
-    recargar();
+    correrBusqueda();
   }
 
   dom.appendChild(div);
 
-}
-
-function recargar() {
-  correrBusqueda();
 }
 
 export function correrBusqueda() {
@@ -644,8 +645,10 @@ export function agregarOQuitarFavoritos(productId, dom) {
 
   } else {
 
-    // Quitar
-    favoritos.splice(favoritos.indexOf(estaAgregado));
+    // Buscar producto en favoritos
+    const resultado = favoritos.find((el) => el.id === productId + 1);
+    // Borrar producto de favoritos
+    favoritos.splice(favoritos.indexOf(resultado), 1);
 
     // Cambiar mensaje
     mensaje = 'Quitado de favoritos';

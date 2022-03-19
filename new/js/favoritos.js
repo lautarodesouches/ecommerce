@@ -16,9 +16,6 @@ cargarProductos()
 .then( () => {
     favoritos.length > 0 ? mostrarProductos('favoritos', 'Favoritos', favoritos, favoritos.length, main) : noHayFavoritos(main);
 })
-.catch( (res) => {
-    mostrarError(main, res);
-})
 .finally( () => {
     showMenu();
     showFooter();
