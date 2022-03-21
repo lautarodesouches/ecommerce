@@ -129,7 +129,7 @@ export function showMenu() {
     
     }
 
-    cantidadItemsEnCarrito.innerText = carrito.length;
+    carrito.length > 0 && (cantidadItemsEnCarrito.innerText = carrito.length);
 
     // ---------------------------------------- Eventos
 

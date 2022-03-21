@@ -600,9 +600,31 @@ export function manejarCantidades(id) {
   }
 
   // Boton comprar
-  botonComprar.onclick = () => {agregarProducto(id, cantidadSeleccionada); window.location.href = urlCarrito;}
+  botonComprar.onclick = () => {
+    // Agregar producto a canasta
+    agregarProducto(id, cantidadSeleccionada);
+    // Redirigir a carrito
+    window.location.href = urlCarrito;
+  }
   // Boton agregar a carrito
-  botonAgregar.onclick = () => {agregarProducto(id, cantidadSeleccionada); showMenu()}
+  botonAgregar.onclick = () => {
+    // Agregar producto a canasta
+    agregarProducto(id, cantidadSeleccionada);
+
+    showMenu();
+    // Mostrar mensaje
+    Toastify({
+      text: 'Producto agregado',
+      duration: 3000,
+      gravity: "top", // `top` or `bottom`
+      position: "right", // `left`, `center` or `right`
+      style: {
+        background: "#1cb81c",
+        color: "white"
+      },
+      onClick: function(){} // Callback after click
+    }).showToast();
+  }
 
 }
 
