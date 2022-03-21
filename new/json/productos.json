@@ -1,8 +1,8 @@
 [
     {
         "id": 1,
-        "nombre": "Notebook Asus",
-        "marca": "Asus",
+        "nombre": "Notebook Exo Smart P33 Intel N4020",
+        "marca": "Exo Smart",
         "categoria": "Notebooks",
         "precio": 48999,
         "cantidadDisponible": 2,
@@ -13,7 +13,7 @@
             "gris",
             "negro"
         ],
-        "descripcion": "La notebook Asus es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina.        ",
+        "descripcion": "La notebook Exo Smart P33 Intel N4020 es una solución tanto para trabajar y estudiar como para entretenerte. Al ser portátil, el escritorio dejará de ser tu único espacio de uso para abrirte las puertas a otros ambientes ya sea en tu casa o en la oficina.        ",
         "destino": "products/"
     },
     {

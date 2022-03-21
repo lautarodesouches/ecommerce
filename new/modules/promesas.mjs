@@ -21,3 +21,23 @@ export const cargarProductos = async () => {
     });
 
 }
+
+export const procesarPago = new Promise( (myResolve, myReject) => {
+
+    setTimeout(() => {
+        
+        let random = Math.random() * 11;
+        
+        if (random < 9) {
+        
+            myResolve('Pago aceptado ');
+            
+        } else {
+            
+            myReject('Pago rechazado');
+            
+        }
+        
+    }, 1000);
+
+});
