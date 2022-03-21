@@ -836,3 +836,12 @@ export function mostrarCarrito(dom) {
   }
 
 }
+
+export function borrarCarritoYCargarMenu() {
+  // Remover del local storage
+  localStorage.removeItem('carrito');
+  // Resetear variable
+  carrito.length = 0;
+  // Recargar menu
+  showMenu();
+}

@@ -1,6 +1,6 @@
 export const urlInicio          = '/new/';
-export const urlIniciarSesion   = '/new/login/';
-export const urlRegistrarse     = '/new/register/';
+export const urlIniciarSesion   = '#';
+export const urlRegistrarse     = '#';
 export const urlCategorias      = '/new/categorias/';
 export const urlOfertas         = '/new/ofertas/';
 export const urlFavoritos       = '/new/favoritos/';
