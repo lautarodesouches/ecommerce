@@ -2,6 +2,7 @@
 
 import {todosLosProductos, productosRecomendados, productosDestacados, ofertas} from "../modules/arrays.mjs";
 import {urlPagar, urlInicio, urlProductosJSON} from "../modules/urls.mjs";
+import {fecha} from "../modules/constantes.mjs";
 
 // ---------------------------------------- Exportar
 export const cargarProductos = async () => {
@@ -27,10 +28,9 @@ export const procesarPago  = async (dom, expirationMonth, expirationYear) => {
 
         setTimeout(() => {
 
-            let date = new Date();
             let exp = new Date(expirationYear, expirationMonth);
         
-            if (exp.valueOf() > date.valueOf()) {
+            if (exp.valueOf() > fecha.valueOf()) {
         
                 myResolve(
                     dom.innerHTML = `

@@ -5,10 +5,7 @@ import {showFooter} from "../modules/footer.mjs";
 import {mostrarProductos, mostrarError} from "../modules/funciones.mjs";
 import {cargarProductos} from "../modules/promesas.mjs";
 import {ofertas} from "../modules/arrays.mjs";
-
-// ---------------------------------------- DOM
-
-const main = document.getElementsByTagName('main')[0];
+import {main} from "../modules/dom.mjs";
 
 // ---------------------------------------- Promesa
 

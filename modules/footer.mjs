@@ -1,14 +1,8 @@
 // ---------------------------------------- Importar
 
 import {urlAyuda, urlContacto, urlPrivacidad} from "../modules/urls.mjs";
-
-// ---------------------------------------- DOM
-
-const footer = document.getElementsByTagName('footer')[0];
-
-// ---------------------------------------- Variables
-
-const year = new Date().getFullYear();
+import {fecha} from "../modules/constantes.mjs";
+import {footer} from "../modules/dom.mjs";
 
 // ---------------------------------------- Funciones
 
@@ -21,7 +15,7 @@ export function showFooter() {
               <div class="col-12 col-md-3"><a href="${urlAyuda}" class="text-decoration-none text-dark">Ayuda</a></div>
               <div class="col-12 col-md-3"><a href="${urlContacto}" class="text-decoration-none text-dark" target="_blank">Contacto</a></div>
               <div class="col-12 col-md-3"><a href="${urlPrivacidad}" class="text-decoration-none text-dark">Privacidad</a></div>
-              <div class="col-12 col-md-3">©${year} Copyright</div>
+              <div class="col-12 col-md-3">©${fecha.getFullYear()} Copyright</div>
           </nav>
         </div>
     `;

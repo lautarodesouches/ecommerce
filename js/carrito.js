@@ -4,10 +4,7 @@ import {showMenu} from "../modules/menu.mjs";
 import {showFooter} from "../modules/footer.mjs";
 import {mostrarCarrito, mostrarError} from "../modules/funciones.mjs";
 import {cargarProductos} from "../modules/promesas.mjs";
-
-// ---------------------------------------- DOM
-
-const main = document.getElementsByTagName('main')[0];
+import {main} from "../modules/dom.mjs";
 
 // ---------------------------------------- Promesa
 

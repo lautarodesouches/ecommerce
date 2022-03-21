@@ -42,7 +42,7 @@ export function mostrarBanners(lugar) {
     lugar.appendChild(section);
     
     // Iniciar swiper
-    const swiper = new Swiper('.swiper', {
+    new Swiper('.swiper', {
         // Optional parameters
         direction: 'horizontal',
         loop: true,
@@ -67,9 +67,9 @@ export function mostrarBanners(lugar) {
 
 export function mostrarProductos(id, titulo, array, cantidad, dom) {
     
-  let section = document.createElement('section');
+  let section       = document.createElement('section');
   section.classList = 'container text-center mh-500 py-3';
-  section.id = id;
+  section.id        = id;
   section.innerHTML = `
     <h2>${titulo}</h2>
     <section class="row align-items-start justify-content-center mt-4">
@@ -544,11 +544,11 @@ function mostrarPrecio(id, dom, cantidad) {
 export function manejarCantidades(id) {
 
   // DOM
-  const precioDom = document.getElementById('opciones').children[0];
-  const domSeleccionar = document.getElementById('opciones').children[1].children[0].children[0];
+  const precioDom       = document.getElementById('opciones').children[0];
+  const domSeleccionar  = document.getElementById('opciones').children[1].children[0].children[0];
   const domCantidadDisp = document.getElementById('opciones').children[1].children[1].children[0].children[0];
-  const botonComprar = document.getElementById('opciones').children[2].children[0];
-  const botonAgregar = document.getElementById('opciones').children[3].children[0];
+  const botonComprar    = document.getElementById('opciones').children[2].children[0];
+  const botonAgregar    = document.getElementById('opciones').children[3].children[0];
 
   // Abrir lista cantidades
   domSeleccionar.children[1].onclick = () => {domSeleccionar.children[2].classList.toggle('d-none')}
@@ -656,7 +656,7 @@ export function agregarOQuitarFavoritos(productId, dom) {
 
   // Variable
   let mensaje = '';
-  let color = '';
+  let color   = '';
 
   let estaAgregado = buscarFavorito(productId);
 
@@ -667,7 +667,7 @@ export function agregarOQuitarFavoritos(productId, dom) {
 
     // Cambiar mensaje
     mensaje = 'Agregado a favoritos';
-    color = '#1cb81c';
+    color   = '#1cb81c';
 
   } else {
 
@@ -678,7 +678,7 @@ export function agregarOQuitarFavoritos(productId, dom) {
 
     // Cambiar mensaje
     mensaje = 'Quitado de favoritos';
-    color = '#ff8800';
+    color   = '#ff8800';
 
   }
 
@@ -808,21 +808,6 @@ export function mostrarCarrito(dom) {
     `;
 
     dom.appendChild(section)
-
-    /*
-    <section class="container px-3 py-5 border-top">
-        <div class="row align-items-center justify-content-center">
-            <div class="col-12 col-md-3">
-                <h5>Total:</h5>
-            </div>
-            <div class="col-12 col-md-3">
-                <h5 id="total">$123</h5>
-            </div>
-        </div>
-        <button class="btn btn-primary w-75 mt-5" id="pagar">Pasar a pago</button>
-    </section>
-
-    */
 
   }else{
 

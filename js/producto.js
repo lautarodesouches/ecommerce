@@ -4,9 +4,9 @@ import {showMenu} from "../modules/menu.mjs";
 import {showFooter} from "../modules/footer.mjs";
 import {cargarProductos} from "../modules/promesas.mjs";
 import {urlInicio} from "../modules/urls.mjs";
-
 import {manejarImagesProducto, mostrarColores, mostrarError, mostrarNombreProducto, mostrarDescripcion, manejarCantidades, agregarOQuitarFavoritos, mostrarEstadoFavorito} from "../modules/funciones.mjs";
 import {todosLosProductos} from "../modules/arrays.mjs";
+import {main} from "../modules/dom.mjs";
 
 // ---------------------------------------- Ver Url
 
@@ -20,7 +20,6 @@ productId === -1 && (window.location.href = urlInicio);
 
 // ---------------------------------------- DOM
 
-const main = document.getElementsByTagName('main')[0];
 const nombreDom = document.getElementById('detalles').children[0];
 const coloresDom = document.getElementById('detalles').children[1].children[1];
 const descripDom = document.getElementById('detalles').children[2].children[1];

@@ -1,11 +1,8 @@
 // ---------------------------------------- Importar
 
 import {urlInicio, urlIniciarSesion, urlRegistrarse, urlCategorias, urlOfertas, urlFavoritos, urlCarrito, urlCarpetaImg, urlBuscador} from "../modules/urls.mjs";
-import { carrito } from "./arrays.mjs";
-
-// ---------------------------------------- DOM
-
-const menu = document.getElementsByTagName('header')[0];
+import {carrito} from "../modules/arrays.mjs";
+import {header} from "../modules/dom.mjs";
 
 // ---------------------------------------- Variables
 
@@ -15,9 +12,9 @@ let chevronUp = false;
 
 export function showMenu() {
 
-    menu.innerHTML = '';
-    menu.classList = 'bg-primary py-2 text-white container-fluid text-center';
-    menu.innerHTML = `
+    header.innerHTML = '';
+    header.classList = 'bg-primary py-2 text-white container-fluid text-center';
+    header.innerHTML = `
         <section id="menu-top">
             <nav class="row align-items-center justify-content-center">
                 <div class="col-2 col-md-1">

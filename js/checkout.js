@@ -6,10 +6,11 @@ import {procesarPago} from "../modules/promesas.mjs";
 import {borrarCarritoYCargarMenu} from "../modules/funciones.mjs";
 import {urlInicio} from "../modules/urls.mjs";
 import {carrito} from "../modules/arrays.mjs";
+import {main} from "../modules/dom.mjs";
 
 // ---------------------------------------- DOM
 
-const container = document.getElementsByTagName('main')[0].children[0].children[0].children[0];
+const container = main.children[0].children[0].children[0];
 const form = document.getElementsByTagName('form')[0];
 
 // ---------------------------------------- Evento
@@ -19,7 +20,7 @@ form.onsubmit = (e) => {
     e.preventDefault();
 
     container.innerHTML = `
-        <h5>Cargando</h5>
+        <h5>Procesando</h5>
     `;
 
     // Tomar mes vencimiento del formulario
@@ -36,7 +37,7 @@ form.onsubmit = (e) => {
     })
     .catch( (error) => {
         // Mostrar mensaje
-        error
+        error;
     })
 
 }
