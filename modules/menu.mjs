@@ -13,7 +13,7 @@ let chevronUp = false;
 export function showMenu() {
 
     header.innerHTML = '';
-    header.classList = 'bg-primary py-2 text-white container-fluid text-center';
+    header.classList = 'bg-primary py-2 text-white container-fluid text-center maven';
     header.innerHTML = `
         <section id="menu-top">
             <nav class="row align-items-center justify-content-center">

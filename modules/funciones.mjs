@@ -71,8 +71,8 @@ export function mostrarProductos(id, titulo, array, cantidad, dom) {
   section.classList = 'container text-center mh-500 py-3';
   section.id        = id;
   section.innerHTML = `
-    <h2>${titulo}</h2>
-    <section class="row align-items-start justify-content-center mt-4">
+    <h2 class="times">${titulo}</h2>
+    <section class="row align-items-start justify-content-center mt-4 arial">
     </section>
   `;
 
@@ -161,7 +161,7 @@ export function mostrarCategorias(dom, array) {
   section.classList = 'container';
 
   let div = document.createElement('div');
-  div.classList = 'row align-items-center justify-content-center text-center';
+  div.classList = 'row align-items-center justify-content-center text-center verdana';
 
   array.forEach(element => {
 
@@ -212,7 +212,7 @@ export function noHayFavoritos(dom) {
       <h5>Podés agregar productos a favoritos para poder verlos o comprarlos más tarde.</h5>
   </div>
   <a href="${urlBuscador}">
-      <button class="btn btn-primary">Buscar productos</button>
+      <button class="btn btn-primary arial">Buscar productos</button>
   </a>
   `;
   
@@ -803,7 +803,7 @@ export function mostrarCarrito(dom) {
           </div>
       </div>
       <a href="${urlPagar}">
-        <button class="btn btn-primary w-75 mt-5" id="pagar">Pasar a pago</button>
+        <button class="btn btn-primary w-75 mt-5 arial" id="pagar"><h5>Pasar a pago</h5></button>
       </a>
     `;
 
@@ -814,7 +814,7 @@ export function mostrarCarrito(dom) {
     dom.innerHTML = `
       <h3 class="mt-5">No se encontraror productos en la canasta<h3>
       <a href="${urlInicio}">
-        <button class="btn btn-primary mt-4 px-5"><h5>Ir a inicio</h5></button>
+        <button class="btn btn-primary mt-4 px-5 arial"><h5>Ir a inicio</h5></button>
       </a>
     `;
 

@@ -8,7 +8,7 @@ import {footer} from "../modules/dom.mjs";
 
 export function showFooter() {
     
-    footer.classList = 'container-fluid page-footer py-2 bg-light';
+    footer.classList = 'container-fluid page-footer py-2 bg-light maven';
     footer.innerHTML = `
         <div class="footer-copyright">
           <nav class="row justify-content-center text-center text-dark">

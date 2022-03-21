@@ -1,76 +1,64 @@
-/* Fonts Start*/
+/* -- Fonts Start -- */
 
-.platino{
-  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+/* Google fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+.maven{
+  font-family: 'Maven Pro', sans-serif;
 }
 
-.tahoma{
-  font-family: Tahoma, Geneva, sans-serif;
-}
+/* Web Safe Fonts */
 
-.century{
-  font-family: Century Gothic, sans-serif;
-}
-
-.lucida{
-  font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-}
-
-.arial-black{
-  font-family: 'Arial Black', Gadget, sans-serif;
-}
-
-.times{
-  font-family: 'Times New Roman', Times, serif;
-}
-
-.arial-narrow{
-  font-family: 'Arial Narrow', sans-serif;
+.arial{
+  font-family: Arial, sans-serif;
 }
 
 .verdana{
-  font-family: Verdana, Geneva, sans-serif;
+  font-family: Verdana, sans-serif;
 }
 
-.copperplate{
-  font-family: Copperplate / Copperplate Gothic Light, sans-serif;
+.helvetica{
+  font-family: Helvetica, sans-serif;
 }
 
-.lucida-console{
-  font-family: 'Lucida Console', Monaco, monospace;
-}
-
-.gill{
-  font-family: Gill Sans / Gill Sans MT, sans-serif;
+.tahoma{
+  font-family: Tahoma, sans-serif;
 }
 
 .trebuchet{
-  font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
 }
 
-.courier{
-  font-family: 'Courier New', Courier, monospace;
-}
-
-.arial{
-  font-family: Arial, Helvetica, sans-serif;
+.times{
+  font-family: 'Times New Roman', serif;
 }
 
 .georgia{
-  font-family: Georgia, Serif;
+  font-family: Georgia, serif;
 }
 
-/* Fonts End */
+.garamond{
+  font-family: Garamond, serif;
+}
 
-/* Coustom start */
+.courier{
+  font-family: 'Courier New', monospace;
+}
+
+.brush{
+  font-family: 'Brush Script MT', cursive;
+}
+
+/* -- Fonts End -- */
+
+/* -- Coustom start -- */
 
 a{
   cursor: pointer;
 }
 
-.logo{
-  width: 75%;
-}
+/* Swiper start */
 
 .swiper {
   width: 100%;
@@ -102,12 +90,32 @@ a{
   object-fit: contain;
 }
 
+/* Swiper end */
+
 .mh-700{
   min-height: 700px;
 }
 
 .mh-500{
   min-height: 500px;
+}
+
+.logo{
+  width: 75%;
+}
+
+#abrirOpcionesOrden:hover, #opcionesOrden ul li:hover{
+  cursor: pointer;
+  background: rgb(69, 69, 230);
+  color: white;
+}
+
+.addFavourite{
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem 1rem 0 0;
 }
 
 .articulo-principal{
@@ -140,18 +148,6 @@ a{
   height: 200px;
 }
 
-#abrirOpcionesOrden:hover, #opcionesOrden ul li:hover{
-  cursor: pointer;
-  background: rgb(69, 69, 230);
-  color: white;
-}
-
-#opcionesOrden{
-  position: absolute;
-  width: 100%;
-  z-index: 99;
-}
-
 .cross {
   position: absolute;
   top: 0;
@@ -163,16 +159,10 @@ a{
   cursor: pointer;
 }
 
-.addFavourite{
-  cursor: pointer;
+#opcionesOrden{
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0.5rem 1rem 0 0;
-}
-
-.previewImg:hover{
-  border: 1px solid #0d6efd!important;
+  width: 100%;
+  z-index: 99;
 }
 
 .opcionesCantidad{
@@ -185,7 +175,21 @@ a{
   cursor: pointer;
 }
 
-/* Colores de productos */
+.previewImg:hover{
+  border: 1px solid #0d6efd!important;
+}
+
+.prodCart img{
+  width: 75%;
+}
+
+#quitar{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* Colores de productos Start */
 
 .bg-rojo{
   background-color: red;
@@ -217,21 +221,11 @@ a{
   color: white;
 }
 
-#quitar{
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.prodCart img{
-  width: 75%;
-}
+/* Colores de productos End */
 
 @media (min-width:768px){
 
-  .logo{
-    width: 40%;
-  }
+  /* Swiper Start */
 
   .swiper {
     height: 500px;
@@ -242,12 +236,14 @@ a{
     height: 500px;
   }
 
+  /* Swiper end */
+
+  .logo{
+    width: 40%;
+  }
+
   .articulo{
     min-height: 420px;
-  }
-  
-  #resultados .articulo{
-    min-height: 450px !important;
   }
 
   .prodCart{
@@ -257,6 +253,10 @@ a{
   .prodCart img{
     width: auto;
     height: 100px;
+  }
+
+  #resultados .articulo{
+    min-height: 450px !important;
   }
 
 }
