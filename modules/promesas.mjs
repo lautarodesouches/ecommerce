@@ -13,11 +13,11 @@ export const cargarProductos = async () => {
 
         todosLosProductos.push(producto);
 
-        (producto.categoria === 'Consolas') && productosRecomendados.push(producto);
+        producto.recomendado && productosRecomendados.push(producto);
 
-        (producto.categoria === 'Celulares') && productosDestacados.push(producto);
+        producto.destacado && productosDestacados.push(producto);
 
-        (producto.categoria === 'Notebooks') && ofertas.push(producto);
+        producto.oferta && ofertas.push(producto);
 
     });
 
