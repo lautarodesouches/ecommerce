@@ -14,4 +14,4 @@ export const urlCarpetaImg      = 'https://lautarodesouches.github.io/ecommerce/
 
 export const urlProductosJSON   = 'https://lautarodesouches.github.io/ecommerce/json/productos.json';
 
-export const urlPagar           = '/checkout/';
+export const urlPagar           = 'https://lautarodesouches.github.io/ecommerce/checkout/';
