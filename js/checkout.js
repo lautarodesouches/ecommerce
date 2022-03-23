@@ -10,23 +10,25 @@ import {main} from "../modules/dom.mjs";
 
 // ---------------------------------------- DOM
 
-const container = main.children[0].children[0].children[0];
+const container = main.children[0];
 const form = document.getElementsByTagName('form')[0];
 
 // ---------------------------------------- Evento
+
+console.log(form.children[0].children[0].children[2].children[0].children[0].children[1].children[0]);
 
 form.onsubmit = (e) => {
 
     e.preventDefault();
 
+    // Tomar mes vencimiento del formulario
+    const expirationMonth = document.getElementById('cardMonth').value;
+    // Tomar año vencimiento del formulario
+    const expirationYear = document.getElementById('cardYear').value;
+
     container.innerHTML = `
         <h5>Procesando</h5>
     `;
-
-    // Tomar mes vencimiento del formulario
-    let expirationMonth = form.children[2].children[0].children[0].children[1].children[0].value;
-    // Tomar año vencimiento del formulario
-    let expirationYear = form.children[2].children[0].children[0].children[1].children[1].value;
 
     procesarPago(container, expirationMonth, expirationYear)
     .then( (value) => {

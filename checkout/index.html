@@ -25,9 +25,9 @@
 <!--===============================================================================================-->
     <main class="container-fluid px-md-0 py-5 bg-light mh-700 text-center">
         <div class="container text-center p-3">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-6 bg-white rounded p-3">
-                    <form class="p-3 text-start">
+            <form class="p-3 text-start">
+                <div class="row">
+                    <div class="col-12 col-md-6">
                         <div class="mb-3">
                             <label for="cardNumber" class="form-label"><b>Número de tarjeta</b></label>
                             <input type="text" class="form-control" id="cardNumber" aria-describedby="numero tarjeta" required="">
@@ -54,12 +54,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-primary mt-4">Finalizar compra</button>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label"><b>Direccion</b></label>
+                            <input type="text" class="form-control" id="direccion" aria-describedby="Direccion">
                         </div>
-                    </form>
+                        <div class="mb-3">
+                            <label for="localidad" class="form-label"><b>Localidad</b></label>
+                            <input type="text" class="form-control" id="localidad" aria-describedby="Localidad">
+                            <div class="form-text">.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="provincia" class="form-label"><b>Provincia</b></label>
+                            <input type="text" class="form-control" id="provincia" aria-describedby="Provincia">
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mt-4">Finalizar compra</button>
+                </div>
+            </form>
         </div>
     </main>
 <!--===============================================================================================-->
