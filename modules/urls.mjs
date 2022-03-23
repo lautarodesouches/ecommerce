@@ -14,4 +14,4 @@ export const urlCarpetaImg      = '/img/';
 
 export const urlProductosJSON   = '/json/productos.json';
 
-export const urlPagar           = url + '/checkout/';
+export const urlPagar           = '/checkout/';
