@@ -1,17 +1,19 @@
-export const urlInicio          = '/';
-export const urlCategorias      = '/categorias/';
-export const urlOfertas         = '/ofertas/';
-export const urlFavoritos       = '/favoritos/';
-export const urlCarrito         = '/cart/';
-export const urlProducto        = '/producto/';
-export const urlBuscador        = '/buscador/';
+let url = 'https://lautarodesouches.github.io/ecommerce';
 
-export const urlAyuda           = '/help/';
-export const urlContacto        = '/contact/';
-export const urlPrivacidad      = '/privacy/';
+export const urlInicio          = url + '/';
+export const urlCategorias      = url + '/categorias/';
+export const urlOfertas         = url + '/ofertas/';
+export const urlFavoritos       = url + '/favoritos/';
+export const urlCarrito         = url + '/cart/';
+export const urlProducto        = url + '/producto/';
+export const urlBuscador        = url + '/buscador/';
 
-export const urlCarpetaImg      = '/img/';
+export const urlAyuda           = url + '/help/';
+export const urlContacto        = url + '/contact/';
+export const urlPrivacidad      = url + '/privacy/';
 
-export const urlProductosJSON   = '/json/productos.json';
+export const urlCarpetaImg      = url + '/img/';
+
+export const urlProductosJSON   = url + '/json/productos.json';
 
 export const urlPagar           = url + '/checkout/';
